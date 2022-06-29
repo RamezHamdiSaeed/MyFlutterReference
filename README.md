@@ -14,3 +14,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## What is achieved so far ?
+- creating flutter app from scratch
+- understanding the basics of flutter
+- organize the code in a way that is easy to read and maintain
+- keep digging into the flutter framework especially the widgets
