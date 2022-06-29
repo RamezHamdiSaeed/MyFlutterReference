@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  void printText(msg) {
+    // ignore: avoid_print
+    print("button clicked with '$msg'");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +33,35 @@ class MyApp extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      IconButton(
-                        onPressed: () {},
+                      TextButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                        ),
+                        onPressed: () => printText("hello user"),
                         icon: const Icon(
                           Icons.verified_user,
                           color: Colors.red,
+                        ),
+                        label: const Text(
+                          'User',
+                          style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(5, 5),
+                                blurRadius: 10,
+                                color: Colors.blue,
+                              ),
+                            ],
+                            // decoration: TextDecoration.combine(<TextDecoration>[
+                            //   TextDecoration.underline,
+                            //   TextDecoration.lineThrough
+                            // ]),
+                          ),
                         ),
                       ),
                       TextButton.icon(
