@@ -25,45 +25,118 @@ class MyApp extends StatelessWidget {
               // color: const Color.fromRGBO(255, 0, 0, 0.2),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const <Widget>[
-                  Text(
-                    'Men',
-                    style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      letterSpacing: 10,
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(5, 5),
-                          blurRadius: 10,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.verified_user,
+                          color: Colors.red,
+                        ),
+                        label: const Text(
+                          'User',
+                          style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(5, 5),
+                                blurRadius: 10,
+                                color: Colors.blue,
+                              ),
+                            ],
+                            // decoration: TextDecoration.combine(<TextDecoration>[
+                            //   TextDecoration.underline,
+                            //   TextDecoration.lineThrough
+                            // ]),
+                          ),
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.developer_mode_rounded,
                           color: Colors.blue,
                         ),
-                      ],
-                      // decoration: TextDecoration.combine(<TextDecoration>[
-                      //   TextDecoration.underline,
-                      //   TextDecoration.lineThrough
-                      // ]),
-                    ),
-                  ),
-                  Text(
-                    'Women',
-                    style: TextStyle(
-                      color: Colors.pink,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      letterSpacing: 10,
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(5, 5),
-                          blurRadius: 10,
-                          color: Colors.pink,
+                        label: const Text(
+                          'Developer',
+                          style: TextStyle(
+                            color: Colors.pink,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(5, 5),
+                                blurRadius: 10,
+                                color: Colors.pink,
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  )
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.male_rounded,
+                          color: Colors.red,
+                        ),
+                        label: const Text(
+                          'Man',
+                          style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(5, 5),
+                                blurRadius: 10,
+                                color: Colors.blue,
+                              ),
+                            ],
+                            // decoration: TextDecoration.combine(<TextDecoration>[
+                            //   TextDecoration.underline,
+                            //   TextDecoration.lineThrough
+                            // ]),
+                          ),
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.female, color: Colors.blue),
+                        label: const Text(
+                          'Woman',
+                          style: TextStyle(
+                            color: Colors.pink,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(5, 5),
+                                blurRadius: 10,
+                                color: Colors.pink,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               )),
         ));
