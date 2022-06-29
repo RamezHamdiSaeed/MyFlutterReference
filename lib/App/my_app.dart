@@ -30,6 +30,9 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       TextButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                        ),
                         onPressed: () {},
                         icon: const Icon(
                           Icons.verified_user,
@@ -58,6 +61,9 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                       TextButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                        ),
                         onPressed: () {},
                         icon: const Icon(
                           Icons.developer_mode_rounded,
@@ -87,6 +93,9 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       TextButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                        ),
                         onPressed: () {},
                         icon: const Icon(
                           Icons.male_rounded,
@@ -115,6 +124,9 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                       TextButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                        ),
                         onPressed: () {},
                         icon: const Icon(Icons.female, color: Colors.blue),
                         label: const Text(
