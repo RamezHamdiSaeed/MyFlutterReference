@@ -21,3 +21,5 @@ samples, guidance on mobile development, and a full API reference.
 - organize the code in a way that is easy to read and maintain
 - keep digging into the flutter framework especially the widgets
 - use different color systems like RGBO ARGB HEX (const Color()), and names
+- how to change the distribution of elements in the column or row in the screen 
+- how to change the distribution on rows and columns in the screen

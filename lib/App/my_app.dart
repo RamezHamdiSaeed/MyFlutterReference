@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
             // ],
           ),
           body: Container(
+
               // padding: const EdgeInsets.only(top: 200),
               alignment: Alignment.center,
               color: Colors.white,
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
               // color: const Color.fromARGB(250, 255, 0, 255),
               // color: const Color.fromRGBO(255, 0, 0, 0.2),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[Text('Hello World')],
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const <Widget>[Text('Hello World'), Text('counter')],
               )),
         ));
   }
