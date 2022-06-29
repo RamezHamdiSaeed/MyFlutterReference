@@ -20,3 +20,4 @@ samples, guidance on mobile development, and a full API reference.
 - understanding the basics of flutter
 - organize the code in a way that is easy to read and maintain
 - keep digging into the flutter framework especially the widgets
+- use different color systems like RGBO ARGB HEX (const Color()), and names
