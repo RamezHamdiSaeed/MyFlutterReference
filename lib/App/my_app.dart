@@ -8,7 +8,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
+        leading: const Icon(Icons.add_alert),
         title: const Text('first app from scratch '),
+        // actions: const <Widget>[
+        //   Icon(Icons.add),
+        // ],
       ),
       body: Container(
           alignment: Alignment.center,
