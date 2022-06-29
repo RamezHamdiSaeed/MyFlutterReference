@@ -23,3 +23,4 @@ samples, guidance on mobile development, and a full API reference.
 - use different color systems like RGBO ARGB HEX (const Color()), and names
 - how to change the distribution of elements in the column or row in the screen 
 - how to change the distribution on rows and columns in the screen
+- how to style text Widgets properly
