@@ -2,14 +2,37 @@ import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  void printText(msg) {
-    // ignore: avoid_print
-    print("button clicked with '$msg'");
+  // void printText(msg) {
+  //   // ignore: avoid_print
+  //   print("button clicked with '$msg'");
+  // }
+  TextStyle textButtonStyle({required Color color}) {
+    return TextStyle(color: color, shadows: <Shadow>[
+      Shadow(
+        color: color,
+        offset: const Offset(5, 5),
+        blurRadius: 10,
+      )
+    ]);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData(
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all(Colors.white)),
+          ),
+          textTheme: const TextTheme(
+            button: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              letterSpacing: 1,
+            ),
+          ),
+        ),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
@@ -34,61 +57,25 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       TextButton.icon(
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
-                        ),
-                        onPressed: () => printText("hello user"),
+                        onPressed: () {},
                         icon: const Icon(
                           Icons.verified_user,
                           color: Colors.red,
                         ),
-                        label: const Text(
+                        label: Text(
                           'User',
-                          style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 1,
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(5, 5),
-                                blurRadius: 10,
-                                color: Colors.blue,
-                              ),
-                            ],
-                            // decoration: TextDecoration.combine(<TextDecoration>[
-                            //   TextDecoration.underline,
-                            //   TextDecoration.lineThrough
-                            // ]),
-                          ),
+                          style: textButtonStyle(color: Colors.blue),
                         ),
                       ),
                       TextButton.icon(
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
-                        ),
                         onPressed: () {},
                         icon: const Icon(
                           Icons.developer_mode_rounded,
                           color: Colors.blue,
                         ),
-                        label: const Text(
+                        label: Text(
                           'Developer',
-                          style: TextStyle(
-                            color: Colors.pink,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 1,
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(5, 5),
-                                blurRadius: 10,
-                                color: Colors.pink,
-                              ),
-                            ],
-                          ),
+                          style: textButtonStyle(color: Colors.red),
                         ),
                       ),
                     ],
@@ -97,58 +84,22 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       TextButton.icon(
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
-                        ),
                         onPressed: () {},
                         icon: const Icon(
                           Icons.male_rounded,
                           color: Colors.red,
                         ),
-                        label: const Text(
+                        label: Text(
                           'Man',
-                          style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 1,
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(5, 5),
-                                blurRadius: 10,
-                                color: Colors.blue,
-                              ),
-                            ],
-                            // decoration: TextDecoration.combine(<TextDecoration>[
-                            //   TextDecoration.underline,
-                            //   TextDecoration.lineThrough
-                            // ]),
-                          ),
+                          style: textButtonStyle(color: Colors.blue),
                         ),
                       ),
                       TextButton.icon(
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
-                        ),
                         onPressed: () {},
                         icon: const Icon(Icons.female, color: Colors.blue),
-                        label: const Text(
+                        label: Text(
                           'Woman',
-                          style: TextStyle(
-                            color: Colors.pink,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 1,
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(5, 5),
-                                blurRadius: 10,
-                                color: Colors.pink,
-                              ),
-                            ],
-                          ),
+                          style: textButtonStyle(color: Colors.red),
                         ),
                       ),
                     ],
