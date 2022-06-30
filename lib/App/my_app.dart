@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
               letterSpacing: 1,
             ),
           ),
+          primaryColor: Colors.teal,
         ),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -42,6 +43,16 @@ class MyApp extends StatelessWidget {
             //   Icon(Icons.add),
             // ],
           ),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {},
+            icon: const Icon(Icons.question_mark),
+            label: const Text("info"),
+            tooltip: "info about Genders",
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
           body: Container(
 
               // padding: const EdgeInsets.only(top: 200),

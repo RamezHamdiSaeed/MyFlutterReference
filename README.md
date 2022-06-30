@@ -17,16 +17,17 @@ samples, guidance on mobile development, and a full API reference.
 
 ## What are achieved so far ?
 
-- creating flutter app from scratch
-- understanding the basics of flutter
-- organize the code in a way that is easy to read and maintain
-- keep digging into the flutter framework especially the widgets
-- use different color systems like RGBO ARGB HEX (const Color()), and names
-- how to change the distribution of elements in the column or row in the screen
-- how to change the distribution on rows and columns in the screen
-- how to style text Widgets properly
-- how to make our grids manually and using buttons like TextButton,OutlinedButton and ElevatedButton
-- how to style buttons and padding beside the width and height
-- how to use IconButton
-- how to send function as a parameter (Higher order function or callback)
-- how to reuse the code to avoid DRY (Don't Repeat Yourself),using the MaterialApp Widget theme property ,Widgets as variable and/or functions(returned from functions)
+- Creating flutter app from scratch
+- Understanding the basics of flutter
+- Organize the code in a way that is easy to read and maintain
+- Keep digging into the flutter framework especially the widgets
+- Use different color systems like RGBO ARGB HEX (const Color()), and names
+- How to change the distribution of elements in the column or row in the screen
+- How to change the distribution on rows and columns in the screen
+- How to style text Widgets properly
+- How to make our grids manually and using buttons like TextButton,OutlinedButton and ElevatedButton
+- How to style buttons and padding beside the width and height
+- How to use IconButton
+- How to send function as a parameter (Higher order function or callback)
+- How to reuse the code to avoid DRY (Don't Repeat Yourself),using the MaterialApp Widget theme property ,Widgets as variable and/or functions(returned from functions)
+- Be familiar with the FloatingActionButton Widget and FloatingActionButtonLocation Widget.
