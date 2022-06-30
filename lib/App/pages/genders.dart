@@ -14,6 +14,25 @@ class Genders extends StatelessWidget {
     ]);
   }
 
+  Container textFieldTemplate(
+      {bool obsecureText = false,
+      TextInputType keyboardType = TextInputType.text,
+      required Icon icon,
+      required String decorationLabelText}) {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: TextField(
+        obscureText: obsecureText,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+            icon: icon,
+            label: Text(decorationLabelText),
+            hintText: "Enter your $decorationLabelText",
+            hintStyle: const TextStyle(color: Color.fromARGB(60, 65, 65, 65))),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,69 +46,36 @@ class Genders extends StatelessWidget {
       floatingActionButton: const ChangingFloatingActionButtonTooltip(),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: Container(
-
-          // padding: const EdgeInsets.only(top: 200),
-          alignment: Alignment.center,
-          color: Colors.white,
-          // color: const Color(0x51ff0000),
-          // color: const Color.fromARGB(250, 255, 0, 255),
-          // color: const Color.fromRGBO(255, 0, 0, 0.2),
+        // padding: const EdgeInsets.only(top: 200),
+        alignment: Alignment.center,
+        color: Colors.white,
+        // color: const Color(0x51ff0000),
+        // color: const Color.fromARGB(250, 255, 0, 255),
+        // color: const Color.fromRGBO(255, 0, 0, 0.2),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.verified_user,
-                      color: Colors.red,
-                    ),
-                    label: Text(
-                      'User',
-                      style: textButtonStyle(color: Colors.blue),
-                    ),
-                  ),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.developer_mode_rounded,
-                      color: Colors.blue,
-                    ),
-                    label: Text(
-                      'Developer',
-                      style: textButtonStyle(color: Colors.red),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.male_rounded,
-                      color: Colors.red,
-                    ),
-                    label: Text(
-                      'Man',
-                      style: textButtonStyle(color: Colors.blue),
-                    ),
-                  ),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.female, color: Colors.blue),
-                    label: Text(
-                      'Woman',
-                      style: textButtonStyle(color: Colors.red),
-                    ),
-                  ),
-                ],
-              ),
+              textFieldTemplate(
+                  obsecureText: false,
+                  keyboardType: TextInputType.text,
+                  icon: const Icon(Icons.person),
+                  decorationLabelText: "First Name"),
+              textFieldTemplate(
+                  obsecureText: true,
+                  keyboardType: TextInputType.visiblePassword,
+                  icon: const Icon(Icons.lock),
+                  decorationLabelText: "Password"),
+              textFieldTemplate(
+                  obsecureText: false,
+                  keyboardType: TextInputType.text,
+                  icon: const Icon(Icons.male),
+                  decorationLabelText: "Gender"),
+              const SizedBox(height: 90),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

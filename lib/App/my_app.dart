@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
               overlayColor: MaterialStateProperty.all(Colors.white)),
         ),
         textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Colors.teal),
           button: TextStyle(
+            color: Colors.teal,
             fontSize: 20,
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.italic,
