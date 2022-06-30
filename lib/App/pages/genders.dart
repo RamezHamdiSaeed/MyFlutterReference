@@ -1,4 +1,5 @@
 import 'package:first_flutter_app/App/components/changing_fab_tooltip.dart';
+import 'package:first_flutter_app/App/components/text_fields.dart';
 import 'package:flutter/material.dart';
 
 class Genders extends StatelessWidget {
@@ -12,25 +13,6 @@ class Genders extends StatelessWidget {
         blurRadius: 10,
       )
     ]);
-  }
-
-  Container textFieldTemplate(
-      {bool obsecureText = false,
-      TextInputType keyboardType = TextInputType.text,
-      required Icon icon,
-      required String decorationLabelText}) {
-    return Container(
-      margin: const EdgeInsets.all(20),
-      child: TextField(
-        obscureText: obsecureText,
-        keyboardType: keyboardType,
-        decoration: InputDecoration(
-            icon: icon,
-            label: Text(decorationLabelText),
-            hintText: "Enter your $decorationLabelText",
-            hintStyle: const TextStyle(color: Color.fromARGB(60, 65, 65, 65))),
-      ),
-    );
   }
 
   @override
@@ -52,28 +34,8 @@ class Genders extends StatelessWidget {
         // color: const Color(0x51ff0000),
         // color: const Color.fromARGB(250, 255, 0, 255),
         // color: const Color.fromRGBO(255, 0, 0, 0.2),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              textFieldTemplate(
-                  obsecureText: false,
-                  keyboardType: TextInputType.text,
-                  icon: const Icon(Icons.person),
-                  decorationLabelText: "First Name"),
-              textFieldTemplate(
-                  obsecureText: true,
-                  keyboardType: TextInputType.visiblePassword,
-                  icon: const Icon(Icons.lock),
-                  decorationLabelText: "Password"),
-              textFieldTemplate(
-                  obsecureText: false,
-                  keyboardType: TextInputType.text,
-                  icon: const Icon(Icons.male),
-                  decorationLabelText: "Gender"),
-              const SizedBox(height: 90),
-            ],
-          ),
+        child: const SingleChildScrollView(
+          child: TextFields(),
         ),
       ),
     );
