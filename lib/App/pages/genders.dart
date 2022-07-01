@@ -27,17 +27,7 @@ class Genders extends StatelessWidget {
       ),
       floatingActionButton: const ChangingFloatingActionButtonTooltip(),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      body: Container(
-        // padding: const EdgeInsets.only(top: 200),
-        alignment: Alignment.center,
-        color: Colors.white,
-        // color: const Color(0x51ff0000),
-        // color: const Color.fromARGB(250, 255, 0, 255),
-        // color: const Color.fromRGBO(255, 0, 0, 0.2),
-        child: const SingleChildScrollView(
-          child: TextFields(),
-        ),
-      ),
+      body: const TextFields(),
     );
   }
 }

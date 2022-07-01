@@ -8,68 +8,83 @@ class TextFields extends StatefulWidget {
 }
 
 class _TextFieldsState extends State<TextFields> {
+  bool passwordVisibility = false;
+
   Container textFieldTemplate(
       {bool obsecureText = false,
       TextInputType keyboardType = TextInputType.text,
-      required Widget icon,
+      Widget? icon,
+      Widget? suffixIcon,
       required String decorationLabelText}) {
+    obsecureText = (keyboardType == TextInputType.visiblePassword)
+        ? !passwordVisibility
+        : obsecureText;
+
+    InputDecoration inputDecorationTemplate = InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
+        border: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey, width: 10),
+            borderRadius: BorderRadius.all(Radius.circular(80))),
+        label: Text(decorationLabelText),
+        hintText: "Enter your $decorationLabelText",
+        hintStyle: const TextStyle(
+            color: Color.fromARGB(60, 65, 65, 65), height: 3.0));
+
+    InputDecoration inputDecoration = (icon == null)
+        ? inputDecorationTemplate
+        : inputDecorationTemplate.copyWith(icon: icon);
+
+    inputDecoration = (suffixIcon == null)
+        ? inputDecoration
+        : inputDecoration.copyWith(suffixIcon: suffixIcon);
     return Container(
+      height: 40,
       margin: const EdgeInsets.all(20),
       child: TextField(
         obscureText: obsecureText,
         keyboardType: keyboardType,
-        decoration: InputDecoration(
-            icon: icon,
-            label: Text(decorationLabelText),
-            hintText: "Enter your $decorationLabelText",
-            hintStyle: const TextStyle(color: Color.fromARGB(60, 65, 65, 65))),
+        decoration: inputDecoration,
       ),
     );
   }
 
-  bool passwordVisibility = false;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        textFieldTemplate(
-            obsecureText: false,
-            keyboardType: TextInputType.emailAddress,
-            icon: const Icon(Icons.email),
-            decorationLabelText: "Email"),
-        Container(
-          margin: const EdgeInsets.all(20),
-          child: TextField(
-            obscureText: !passwordVisibility,
-            keyboardType: TextInputType.visiblePassword,
-            decoration: InputDecoration(
+    return Container(
+      height: double.infinity,
+      alignment: Alignment.center,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            textFieldTemplate(
+                obsecureText: false,
+                keyboardType: TextInputType.emailAddress,
+                icon: const Icon(Icons.email),
+                decorationLabelText: "Email"),
+            textFieldTemplate(
+                keyboardType: TextInputType.visiblePassword,
                 icon: const Icon(Icons.lock),
                 suffixIcon: IconButton(
-                  icon: Icon(
-                    passwordVisibility
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      passwordVisibility = !passwordVisibility;
-                    });
-                  },
-                ),
-                label: const Text("Password"),
-                hintText: "Enter your password",
-                hintStyle:
-                    const TextStyle(color: Color.fromARGB(60, 65, 65, 65))),
-          ),
+                    onPressed: () {
+                      setState(() {
+                        passwordVisibility = !passwordVisibility;
+                      });
+                    },
+                    icon: (passwordVisibility)
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off)),
+                decorationLabelText: "Password"),
+            textFieldTemplate(
+                obsecureText: false,
+                keyboardType: TextInputType.text,
+                icon: const Icon(Icons.male),
+                decorationLabelText: "Gender"),
+            const SizedBox(height: 90),
+          ],
         ),
-        textFieldTemplate(
-            obsecureText: false,
-            keyboardType: TextInputType.text,
-            icon: const Icon(Icons.male),
-            decorationLabelText: "Gender"),
-        const SizedBox(height: 90),
-      ],
+      ),
     );
   }
 }
