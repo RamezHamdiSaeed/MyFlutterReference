@@ -81,6 +81,10 @@ class _TextFieldsState extends State<TextFields> {
                 keyboardType: TextInputType.text,
                 icon: const Icon(Icons.male),
                 decorationLabelText: "Gender"),
+            ElevatedButton(
+              child: const Text("submit"),
+              onPressed: () {},
+            ),
             const SizedBox(height: 90),
           ],
         ),
