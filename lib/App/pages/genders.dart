@@ -20,7 +20,7 @@ class Genders extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.add_alert),
-        title: const Text('Gender'),
+        title: const Text('Age Calculator'),
         // actions: const <Widget>[
         //   Icon(Icons.add),
         // ],
