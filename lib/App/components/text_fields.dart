@@ -70,6 +70,7 @@ class _TextFieldsState extends State<TextFields> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             //! we used stack here to make a postfix text indirectly using Stack widget just for practising
+
             Stack(
               alignment: Alignment.centerRight,
               children: <Widget>[
