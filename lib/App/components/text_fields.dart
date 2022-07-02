@@ -59,6 +59,20 @@ class _TextFieldsState extends State<TextFields> {
 
   @override
   Widget build(BuildContext context) {
+    List<Container> textFields = [
+      textFieldTemplate(
+          obsecureText: false,
+          keyboardType: TextInputType.number,
+          icon: const Icon(Icons.calendar_today),
+          decorationLabelText: "year of birth"),
+      textFieldTemplate(
+          isReadOnly: true,
+          obsecureText: false,
+          keyboardType: TextInputType.number,
+          icon: const Icon(Icons.date_range),
+          decorationLabelText: "Age")
+    ];
+
     return Container(
       //* if the widget has no padding or margin feature we can wrap it within padding or margin Widgets
       //* and we use use them instead of width and heigh if not existed
@@ -69,28 +83,11 @@ class _TextFieldsState extends State<TextFields> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+            //! I don't need to use map just we need to use spread operator (...)
+            ...textFields,
+
             //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
 
-            Stack(
-              alignment: Alignment.centerRight,
-              children: <Widget>[
-                textFieldTemplate(
-                    obsecureText: false,
-                    keyboardType: TextInputType.number,
-                    icon: const Icon(Icons.calendar_today),
-                    decorationLabelText: "year of birth"),
-                const Padding(
-                  padding: EdgeInsets.only(right: 30.0),
-                  child: Text("19xx"),
-                )
-              ],
-            ),
-            textFieldTemplate(
-                isReadOnly: true,
-                obsecureText: false,
-                keyboardType: TextInputType.number,
-                icon: const Icon(Icons.date_range),
-                decorationLabelText: "Age"),
             // textFieldTemplate(
             //     keyboardType: TextInputType.visiblePassword,
             //     icon: const Icon(Icons.lock),
