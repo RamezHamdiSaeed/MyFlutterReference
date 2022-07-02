@@ -60,6 +60,9 @@ class _TextFieldsState extends State<TextFields> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //* if the widget has no padding or margin feature we can wrap it within padding or margin Widgets
+      //* and we use use them instead of width and heigh if not existed
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       height: double.infinity,
       alignment: Alignment.center,
       child: SingleChildScrollView(
