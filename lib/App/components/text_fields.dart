@@ -69,11 +69,21 @@ class _TextFieldsState extends State<TextFields> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            textFieldTemplate(
-                obsecureText: false,
-                keyboardType: TextInputType.number,
-                icon: const Icon(Icons.calendar_today),
-                decorationLabelText: "year of birth"),
+            //! we used stack here to make a postfix text indirectly using Stack widget just for practising
+            Stack(
+              alignment: Alignment.centerRight,
+              children: <Widget>[
+                textFieldTemplate(
+                    obsecureText: false,
+                    keyboardType: TextInputType.number,
+                    icon: const Icon(Icons.calendar_today),
+                    decorationLabelText: "year of birth"),
+                const Padding(
+                  padding: EdgeInsets.only(right: 30.0),
+                  child: Text("19xx"),
+                )
+              ],
+            ),
             textFieldTemplate(
                 isReadOnly: true,
                 obsecureText: false,
