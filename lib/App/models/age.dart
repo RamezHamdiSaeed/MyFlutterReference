@@ -1,10 +1,9 @@
 class Identity {
   String yearOfBirth;
-  int age = 0;
-  Identity({required this.yearOfBirth});
-  void calculateAge() {
+  String age = '';
+  Identity({required this.yearOfBirth}) {
     DateTime now = DateTime.now();
     int currentYear = now.year;
-    age = currentYear - int.parse(yearOfBirth);
+    age = (currentYear - int.parse(yearOfBirth)).toString();
   }
 }

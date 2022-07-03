@@ -59,67 +59,94 @@ class _TextFieldsState extends State<TextFields> {
 
   @override
   Widget build(BuildContext context) {
-    List<Container> textFields = [
-      textFieldTemplate(
-          obsecureText: false,
-          keyboardType: TextInputType.number,
-          icon: const Icon(Icons.calendar_today),
-          decorationLabelText: "year of birth"),
-      textFieldTemplate(
-          isReadOnly: true,
-          obsecureText: false,
-          keyboardType: TextInputType.number,
-          icon: const Icon(Icons.date_range),
-          decorationLabelText: "Age")
+    // List<Container> textFields = [
+    //   textFieldTemplate(
+    //       obsecureText: false,
+    //       keyboardType: TextInputType.number,
+    //       icon: const Icon(Icons.calendar_today),
+    //       decorationLabelText: "year of birth"),
+    //   textFieldTemplate(
+    //       isReadOnly: true,
+    //       obsecureText: false,
+    //       keyboardType: TextInputType.number,
+    //       icon: const Icon(Icons.date_range),
+    //       decorationLabelText: "Age")
+    // ];
+    List<Identity> identities = [
+      Identity(yearOfBirth: "1998"),
+      Identity(yearOfBirth: "1997"),
+      Identity(yearOfBirth: "2000"),
+      Identity(yearOfBirth: "2002")
     ];
-
+    TextStyle ageTextStyle = const TextStyle(fontSize: 20);
     return Container(
       //* if the widget has no padding or margin feature we can wrap it within padding or margin Widgets
       //* and we use use them instead of width and heigh if not existed
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      // padding: const EdgeInsets.symmetric(horizontal: 20),
       height: double.infinity,
-      alignment: Alignment.center,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            //! I don't need to use map just we need to use spread operator (...)
-            ...textFields,
+      alignment: Alignment.topLeft,
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0),
+          child: ListView.builder(
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return Column(children: <Widget>[
+                  //! I don't need to use map just we need to use spread operator (...)
+                  // ...textFields,
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Card(
+                      shadowColor: Colors.grey,
+                      elevation: 2.0,
+                      color: Colors.white24,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(identities[index].age, style: ageTextStyle),
+                              Text(identities[index].yearOfBirth,
+                                  style: ageTextStyle)
+                            ]),
+                      ),
+                    ),
+                  )
+                ]);
+              }
 
-            //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
+              //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
 
-            // textFieldTemplate(
-            //     keyboardType: TextInputType.visiblePassword,
-            //     icon: const Icon(Icons.lock),
-            //     suffixIcon: IconButton(
-            //         onPressed: () {
-            //           setState(() {
-            //             passwordVisibility = !passwordVisibility;
-            //           });
-            //         },
-            //         icon: (passwordVisibility)
-            //             ? const Icon(Icons.visibility)
-            //             : const Icon(Icons.visibility_off)),
-            //     decorationLabelText: "Password"),
-            // textFieldTemplate(
-            //     obsecureText: false,
-            //     keyboardType: TextInputType.text,
-            //     icon: const Icon(Icons.male),
-            //     decorationLabelText: "Gender"),
-            ElevatedButton(
-              child: const Text("submit"),
-              onPressed: () {
-                setState(() {
-                  Identity i = Identity(yearOfBirth: ageController.text);
-                  i.calculateAge();
-                  age = i.age.toString();
-                });
-              },
-            ),
-            const SizedBox(height: 90),
-          ],
-        ),
-      ),
+              // textFieldTemplate(
+              //     keyboardType: TextInputType.visiblePassword,
+              //     icon: const Icon(Icons.lock),
+              //     suffixIcon: IconButton(
+              //         onPressed: () {
+              //           setState(() {
+              //             passwordVisibility = !passwordVisibility;
+              //           });
+              //         },
+              //         icon: (passwordVisibility)
+              //             ? const Icon(Icons.visibility)
+              //             : const Icon(Icons.visibility_off)),
+              //     decorationLabelText: "Password"),
+              // textFieldTemplate(
+              //     obsecureText: false,
+              //     keyboardType: TextInputType.text,
+              //     icon: const Icon(Icons.male),
+              //     decorationLabelText: "Gender"),
+              // ElevatedButton(
+              //   child: const Text("submit"),
+              //   onPressed: () {
+              //     setState(() {
+              //       Identity i = Identity(yearOfBirth: ageController.text);
+              //       i.age;
+              //       age = i.age.toString();
+              //     });
+              //   },
+              // ),
+              // const SizedBox(height: 90),
+              )),
     );
   }
 }
