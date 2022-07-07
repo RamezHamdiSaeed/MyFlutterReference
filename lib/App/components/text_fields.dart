@@ -79,74 +79,89 @@ class _TextFieldsState extends State<TextFields> {
       Identity(yearOfBirth: "2002")
     ];
     TextStyle ageTextStyle = const TextStyle(fontSize: 20);
+
+    var modalBottomSheetContent = Container(
+        //* to fetch the data from specific themeData to apply for specific item  we inherit the whore context of the Theme to specify the applied features
+        color: Theme.of(context).colorScheme.secondary,
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 0),
+            child: ListView.builder(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Column(children: <Widget>[
+                    //! I don't need to use map just we need to use spread operator (...)
+                    // ...textFields,
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Card(
+                        shadowColor: Colors.grey,
+                        elevation: 2.0,
+                        color: Colors.white24,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(identities[index].age,
+                                    style: ageTextStyle),
+                                Text(identities[index].yearOfBirth,
+                                    style: ageTextStyle)
+                              ]),
+                        ),
+                      ),
+                    ),
+                  ]);
+                }
+
+                //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
+
+                // textFieldTemplate(
+                //     keyboardType: TextInputType.visiblePassword,
+                //     icon: const Icon(Icons.lock),
+                //     suffixIcon: IconButton(
+                //         onPressed: () {
+                //           setState(() {
+                //             passwordVisibility = !passwordVisibility;
+                //           });
+                //         },
+                //         icon: (passwordVisibility)
+                //             ? const Icon(Icons.visibility)
+                //             : const Icon(Icons.visibility_off)),
+                //     decorationLabelText: "Password"),
+                // textFieldTemplate(
+                //     obsecureText: false,
+                //     keyboardType: TextInputType.text,
+                //     icon: const Icon(Icons.male),
+                //     decorationLabelText: "Gender"),
+                // ElevatedButton(
+                //   child: const Text("submit"),
+                //   onPressed: () {
+                //     setState(() {
+                //       Identity i = Identity(yearOfBirth: ageController.text);
+                //       i.age;
+                //       age = i.age.toString();
+                //     });
+                //   },
+                // ),
+                // const SizedBox(height: 90),
+                )));
     return Container(
       //* if the widget has no padding or margin feature we can wrap it within padding or margin Widgets
       //* and we use use them instead of width and heigh if not existed
       // padding: const EdgeInsets.symmetric(horizontal: 20),
       height: double.infinity,
-      alignment: Alignment.topLeft,
-      child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0),
-          child: ListView.builder(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                return Column(children: <Widget>[
-                  //! I don't need to use map just we need to use spread operator (...)
-                  // ...textFields,
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Card(
-                      shadowColor: Colors.grey,
-                      elevation: 2.0,
-                      color: Colors.white24,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(identities[index].age, style: ageTextStyle),
-                              Text(identities[index].yearOfBirth,
-                                  style: ageTextStyle)
-                            ]),
-                      ),
-                    ),
-                  )
-                ]);
-              }
-
-              //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
-
-              // textFieldTemplate(
-              //     keyboardType: TextInputType.visiblePassword,
-              //     icon: const Icon(Icons.lock),
-              //     suffixIcon: IconButton(
-              //         onPressed: () {
-              //           setState(() {
-              //             passwordVisibility = !passwordVisibility;
-              //           });
-              //         },
-              //         icon: (passwordVisibility)
-              //             ? const Icon(Icons.visibility)
-              //             : const Icon(Icons.visibility_off)),
-              //     decorationLabelText: "Password"),
-              // textFieldTemplate(
-              //     obsecureText: false,
-              //     keyboardType: TextInputType.text,
-              //     icon: const Icon(Icons.male),
-              //     decorationLabelText: "Gender"),
-              // ElevatedButton(
-              //   child: const Text("submit"),
-              //   onPressed: () {
-              //     setState(() {
-              //       Identity i = Identity(yearOfBirth: ageController.text);
-              //       i.age;
-              //       age = i.age.toString();
-              //     });
-              //   },
-              // ),
-              // const SizedBox(height: 90),
-              )),
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        child: const Text("show Bottom Sheet"),
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return modalBottomSheetContent;
+              });
+        },
+      ),
     );
   }
 }

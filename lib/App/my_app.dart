@@ -22,8 +22,10 @@ class MyApp extends StatelessWidget {
             fontStyle: FontStyle.italic,
             letterSpacing: 1,
           ),
-        ),
-        primarySwatch: Colors.teal,
+        ), //! to use accentColor you need to use colorSchema as its alternative and also for primarySwatch
+
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
+            .copyWith(secondary: Colors.blueAccent),
       ),
       debugShowCheckedModeBanner: false,
       home: const Genders(),

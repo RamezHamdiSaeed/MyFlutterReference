@@ -31,8 +31,9 @@ samples, guidance on mobile development, and a full API reference.
 - How to send function as a parameter (Higher order function or callback).
 - How to reuse the code to avoid DRY (Don't Repeat Yourself),using the MaterialApp Widget theme property ,Widgets as variable and/or functions(returned from functions).
 - Be familiar with the FloatingActionButton Widget and FloatingActionButtonLocation Widget.
-- how to use StatefulWidget and State class to create a stateful widget.
-- how to use TextField Widgets properly.
-- how to use margin and padding properly even if we cannot do it directly.
-- how to use call back functions properly like map to fetch the data in ease .
-- how to use different grids using containers such as Cards,ListView and ListView.builder(),
+- How to use StatefulWidget and State class to create a stateful widget.
+- How to use TextField Widgets properly.
+- How to use margin and padding properly even if we cannot do it directly.
+- How to use call back functions properly like map to fetch the data in ease .
+- How to use different grids using containers such as Cards,ListView and ListView.builder(),
+- How to use the showModalBottomSheet built-method properly.
