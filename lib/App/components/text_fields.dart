@@ -82,7 +82,7 @@ class _TextFieldsState extends State<TextFields> {
 
     var modalBottomSheetContent = Container(
         //* to fetch the data from specific themeData to apply for specific item  we inherit the whore context of the Theme to specify the applied features
-        color: Theme.of(context).colorScheme.secondary,
+        // color: Theme.of(context).colorScheme.secondary,
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0),
             child: ListView.builder(

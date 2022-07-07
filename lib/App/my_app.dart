@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
             letterSpacing: 1,
           ),
         ), //! to use accentColor you need to use colorSchema as its alternative and also for primarySwatch
-
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
-            .copyWith(secondary: Colors.blueAccent),
+        primarySwatch: Colors.teal,
+        // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
+        //     .copyWith(secondary: Colors.blueAccent),
       ),
       debugShowCheckedModeBanner: false,
       home: const Genders(),
