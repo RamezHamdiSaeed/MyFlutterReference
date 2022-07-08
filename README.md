@@ -38,3 +38,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use different grids using containers such as Cards,ListView and ListView.builder(),
 - How to use the showModalBottomSheet built-method properly.
 - How to inherit the ThemeData Context properties.
+- How to use custom packages especially from pub.dev and fonts usually from fonts.google.com .
