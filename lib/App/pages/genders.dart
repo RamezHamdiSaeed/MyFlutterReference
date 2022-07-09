@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:first_flutter_app/App/models/age.dart';
 
-class Genders extends StatelessWidget {
+class Genders extends StatefulWidget {
   const Genders({Key? key}) : super(key: key);
 
+  @override
+  State<Genders> createState() => _GendersState();
+}
+
+class _GendersState extends State<Genders> {
   TextStyle textButtonStyle({required Color color}) {
     return TextStyle(color: color, shadows: <Shadow>[
       Shadow(
@@ -16,6 +21,8 @@ class Genders extends StatelessWidget {
     ]);
   }
 
+  DateTime selectedDateTime = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     List<Identity> identities = [
@@ -25,6 +32,12 @@ class Genders extends StatelessWidget {
       Identity(yearOfBirth: "2002")
     ];
     TextStyle ageTextStyle = const TextStyle(fontSize: 20);
+    //! not when we need to change the widget by specific variable/s we need to assure that the variable/s is/are not within the build method
+    // DateTime selectedDateTime = DateTime.now();
+
+    DateTime minAge({required int age}) {
+      return DateTime(DateTime.now().year - age);
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -35,15 +48,36 @@ class Genders extends StatelessWidget {
         // ],
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      body: Container(
-          height: double.infinity,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+        child: Container(
           alignment: Alignment.center,
+          child: ElevatedButton(
+              child: Text("$selectedDateTime"),
+              onPressed: () {
+                showDatePicker(
+                        context: context,
+                        initialDate: minAge(age: 18),
+                        firstDate: minAge(age: 50),
+                        lastDate: DateTime.now())
+                    .then((value) {
+                  if (value == null) {
+                    return;
+                  }
+                  setState(() {
+                    selectedDateTime = value;
+                    print(selectedDateTime);
+                  });
+                });
+              }),
           //! in case of using url for image we use another named constructor called Image.network
-          child: Image.asset(
-            "assets/images/Self.png",
-            fit: BoxFit.cover,
-            // width: 200.0,
-          )),
+          // child: Image.asset(
+          //   "assets/images/Self.png",
+          //   fit: BoxFit.cover,
+          //   // width: 200.0,
+          // )
+        ),
+      ),
       bottomNavigationBar: BottomBarWithSheet(
         mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),
         bottomBarTheme: const BottomBarTheme(

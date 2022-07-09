@@ -40,3 +40,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to inherit the ThemeData Context properties.
 - How to use custom packages especially from pub.dev and fonts usually from fonts.google.com .
 - How to use Image Widget properly whether for local or network images.
+- How to use showDatePicker properly with "then" if the DatePicker is selected (fulfilled).
