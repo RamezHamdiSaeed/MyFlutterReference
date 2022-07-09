@@ -46,3 +46,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use InkWell Widget to make a clickable custom area.
 - How to use Navigator for navigation between screens(stack of Scaffolds).
 - How to send data to the next screen using Navigator.pushNamed() and to the widget (representing the screen) as a prop .
+- How to use Drawer with ListView and ListTile to create a (side) navigation menu.

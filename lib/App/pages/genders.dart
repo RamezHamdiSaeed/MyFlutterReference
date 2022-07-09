@@ -42,39 +42,39 @@ class _GendersState extends State<Genders> {
     // DateTime minAge({required int age}) {
     //   return DateTime(DateTime.now().year - age);
     // }
-    InkWell dummyContainer(Color customColor, {int customFlex = 1}) {
-      return InkWell(
-        onTap: () {
-          //! if we have multiple page with common condition we supposed to use Navigator.pushNamed("/blue");
-          //* pushReplacement will replace the current page with the new page for memory usage sake but we don't use it here because there will no replicated screens on the stack
-          //! we can pass data as a prop to the widget representing the page we want to navigate to with some class (Widget) configurations.
-          if (customColor == Colors.red) {
-            Navigator.of(context).pushNamed(RedScreen.routName,
-                arguments: {'color': customColor.value});
-          } else if (customColor == Colors.teal) {
-            Navigator.of(context).pushNamed(TealScreen.routName,
-                arguments: {'color': customColor.value});
-          } else {
-            Navigator.of(context).pushNamed(BlueScreen.routName,
-                arguments: {'color': customColor.value});
-          }
-        },
-        child: Container(
-          height: 60.0,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                    customColor.withOpacity(0.5),
-                    customColor,
-                  ]),
-              color: customColor),
-          padding: const EdgeInsets.all(20.0),
-          child: Text("${customColor.value.toString()} Screen"),
-        ),
-      );
-    }
+    // InkWell dummyContainer(Color customColor, {int customFlex = 1}) {
+    //   return InkWell(
+    //     onTap: () {
+    //       //! if we have multiple page with common condition we supposed to use Navigator.pushNamed("/blue");
+    //       //* pushReplacement will replace the current page with the new page for memory usage sake but we don't use it here because there will no replicated screens on the stack
+    //       //! we can pass data as a prop to the widget representing the page we want to navigate to with some class (Widget) configurations.
+    //       if (customColor == Colors.red) {
+    //         Navigator.of(context).pushNamed(RedScreen.routName,
+    //             arguments: {'color': customColor.value});
+    //       } else if (customColor == Colors.teal) {
+    //         Navigator.of(context).pushNamed(TealScreen.routName,
+    //             arguments: {'color': customColor.value});
+    //       } else {
+    //         Navigator.of(context).pushNamed(BlueScreen.routName,
+    //             arguments: {'color': customColor.value});
+    //       }
+    //     },
+    //     child: Container(
+    //       height: 60.0,
+    //       decoration: BoxDecoration(
+    //           gradient: LinearGradient(
+    //               begin: Alignment.topLeft,
+    //               end: Alignment.bottomRight,
+    //               colors: <Color>[
+    //                 customColor.withOpacity(0.5),
+    //                 customColor,
+    //               ]),
+    //           color: customColor),
+    //       padding: const EdgeInsets.all(20.0),
+    //       child: Text("${customColor.value.toString()} Screen"),
+    //     ),
+    //   );
+    // }
 
     // var datePicker = Padding(
     //     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
@@ -105,9 +105,38 @@ class _GendersState extends State<Genders> {
     //       // )
     //     ),
     //   );
+    // var bodyContent1 = Padding(
+    //   padding: const EdgeInsets.all(20.0),
+    //   child: GridView(
+    //       //* the gridView is same as listView since there are another named constructor called .builder for both of them
+    //       //* we can create grid using column of row or row of columns but we the grid will not be flexible for different screen state like (portrait or landscape) and more other reasons like (it support the scroll).
+    //       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+    //           maxCrossAxisExtent: 200,
+    //           //! the below ratio means 3 in width and 1 in height (aspect ratio)
+    //           childAspectRatio: 3 / 2,
+    //           //! we treat the GridView as a Column so they have the same main and cross axis
+    //           mainAxisSpacing: 10,
+    //           crossAxisSpacing: 20),
+    //       children: <Widget>[
+    //         dummyContainer(Colors.red, customFlex: 2),
+    //         dummyContainer(Colors.teal, customFlex: 3),
+    //         dummyContainer(Colors.blue, customFlex: 5),
+    //       ]),
+    // );
+
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            drawerListTile(color: Colors.blue),
+            drawerListTile(color: Colors.red),
+            drawerListTile(color: Colors.teal),
+          ],
+        ),
+      ),
+      drawerScrimColor: Theme.of(context).primaryColor.withOpacity(0.5),
       appBar: AppBar(
-        leading: const Icon(Icons.add_alert),
+        // leading: const Icon(Icons.add_alert),
         title: const Text('Color Screens'),
         // actions: const <Widget>[
         //   Icon(Icons.add),
@@ -115,24 +144,7 @@ class _GendersState extends State<Genders> {
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       //* there is no stretch value for mainAxisAlignment so we need to expand ,or when we want to specify the (grid)areas of layout
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: GridView(
-            //* the gridView is same as listView since there are another named constructor called .builder for both of them
-            //* we can create grid using column of row or row of columns but we the grid will not be flexible for different screen state like (portrait or landscape) and more other reasons like (it support the scroll).
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                //! the below ratio means 3 in width and 1 in height (aspect ratio)
-                childAspectRatio: 3 / 2,
-                //! we treat the GridView as a Column so they have the same main and cross axis
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 20),
-            children: <Widget>[
-              dummyContainer(Colors.red, customFlex: 2),
-              dummyContainer(Colors.teal, customFlex: 3),
-              dummyContainer(Colors.blue, customFlex: 5),
-            ]),
-      ),
+      body: null,
 
       bottomNavigationBar: BottomBarWithSheet(
         mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),
@@ -158,69 +170,63 @@ class _GendersState extends State<Genders> {
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: ListView.builder(
-                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return Column(children: <Widget>[
-                        //! I don't need to use map just we need to use spread operator (...)
-                        // ...textFields,
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Card(
-                            shadowColor: Colors.grey,
-                            elevation: 2.0,
-                            color: Colors.white24,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(identities[index].age,
-                                        style: ageTextStyle),
-                                    Text(identities[index].yearOfBirth,
-                                        style: ageTextStyle)
-                                  ]),
-                            ),
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Column(children: <Widget>[
+                      //! I don't need to use map just we need to use spread operator (...)
+                      // ...textFields,
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Card(
+                          shadowColor: Colors.grey,
+                          elevation: 2.0,
+                          color: Colors.white24,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(identities[index].age,
+                                      style: ageTextStyle),
+                                  Text(identities[index].yearOfBirth,
+                                      style: ageTextStyle)
+                                ]),
                           ),
                         ),
-                      ]);
-                    }
+                      ),
+                    ]);
+                  }
 
-                    //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
+                  //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
 
-                    // textFieldTemplate(
-                    //     keyboardType: TextInputType.visiblePassword,
-                    //     icon: const Icon(Icons.lock),
-                    //     suffixIcon: IconButton(
-                    //         onPressed: () {
-                    //           setState(() {
-                    //             passwordVisibility = !passwordVisibility;
-                    //           });
-                    //         },
-                    //         icon: (passwordVisibility)
-                    //             ? const Icon(Icons.visibility)
-                    //             : const Icon(Icons.visibility_off)),
-                    //     decorationLabelText: "Password"),
-                    // textFieldTemplate(
-                    //     obsecureText: false,
-                    //     keyboardType: TextInputType.text,
-                    //     icon: const Icon(Icons.male),
-                    //     decorationLabelText: "Gender"),
-                    // ElevatedButton(
-                    //   child: const Text("submit"),
-                    //   onPressed: () {
-                    //     setState(() {
-                    //       Identity i = Identity(yearOfBirth: ageController.text);
-                    //       i.age;
-                    //       age = i.age.toString();
-                    //     });
-                    //   },
-                    // ),
-                    // const SizedBox(height: 90),
-                    ))),
+                  ,
+                ))),
         items: const [],
       ),
+    );
+  }
+
+  ListTile drawerListTile({required Color color}) {
+    late String route;
+    if (color == Colors.red) {
+      route = RedScreen.routName;
+    } else if (color == Colors.teal) {
+      route = TealScreen.routName;
+    } else if (color == Colors.blue) {
+      route = BlueScreen.routName;
+    }
+    return ListTile(
+      title: Text(route.replaceFirst('/', '').replaceFirst('S', ' S')),
+      trailing: Icon(
+        Icons.forward,
+        color: color,
+      ),
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(route, arguments: {'color': color.value});
+      },
     );
   }
 }
