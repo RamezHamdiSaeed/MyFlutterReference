@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:first_flutter_app/App/models/age.dart';
+import 'package:first_flutter_app/App/pages/blue.dart';
+import 'package:first_flutter_app/App/pages/teal.dart';
+import 'package:first_flutter_app/App/pages/red.dart';
 
 class Genders extends StatefulWidget {
   const Genders({Key? key}) : super(key: key);
@@ -39,19 +42,37 @@ class _GendersState extends State<Genders> {
     // DateTime minAge({required int age}) {
     //   return DateTime(DateTime.now().year - age);
     // }
-    Container dummyContainer(Color customColor, {int customFlex = 1}) {
-      return Container(
-        height: 60.0,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[
-                  customColor.withOpacity(0.5),
-                  customColor,
-                ]),
-            color: customColor),
-        padding: const EdgeInsets.all(20.0),
+    InkWell dummyContainer(Color customColor, {int customFlex = 1}) {
+      return InkWell(
+        onTap: () {
+          //! if we have multiple page with common condition we supposed to use Navigator.pushNamed("/blue");
+          //* pushReplacement will replace the current page with the new page for memory usage sake but we don't use it here because there will no replicated screens on the stack
+          //! we can pass data as a prop to the widget representing the page we want to navigate to with some class (Widget) configurations.
+          if (customColor == Colors.red) {
+            Navigator.of(context).pushNamed(RedScreen.routName,
+                arguments: {'color': customColor.value});
+          } else if (customColor == Colors.teal) {
+            Navigator.of(context).pushNamed(TealScreen.routName,
+                arguments: {'color': customColor.value});
+          } else {
+            Navigator.of(context).pushNamed(BlueScreen.routName,
+                arguments: {'color': customColor.value});
+          }
+        },
+        child: Container(
+          height: 60.0,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    customColor.withOpacity(0.5),
+                    customColor,
+                  ]),
+              color: customColor),
+          padding: const EdgeInsets.all(20.0),
+          child: Text("${customColor.value.toString()} Screen"),
+        ),
       );
     }
 
@@ -87,7 +108,7 @@ class _GendersState extends State<Genders> {
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.add_alert),
-        title: const Text('age'),
+        title: const Text('Color Screens'),
         // actions: const <Widget>[
         //   Icon(Icons.add),
         // ],
