@@ -1,4 +1,5 @@
 // import 'package:first_flutter_app/App/components/changing_fab_tooltip.dart';
+
 import 'package:flutter/material.dart';
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:first_flutter_app/App/models/age.dart';
@@ -38,13 +39,19 @@ class _GendersState extends State<Genders> {
     // DateTime minAge({required int age}) {
     //   return DateTime(DateTime.now().year - age);
     // }
-    Expanded dummyContainer(Color customColor, {int customFlex = 1}) {
-      return Expanded(
-        flex: customFlex,
-        child: Container(
-            height: 60.0,
-            padding: const EdgeInsets.all(20.0),
+    Container dummyContainer(Color customColor, {int customFlex = 1}) {
+      return Container(
+        height: 60.0,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+                  customColor.withOpacity(0.5),
+                  customColor,
+                ]),
             color: customColor),
+        padding: const EdgeInsets.all(20.0),
       );
     }
 
@@ -87,11 +94,24 @@ class _GendersState extends State<Genders> {
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       //* there is no stretch value for mainAxisAlignment so we need to expand ,or when we want to specify the (grid)areas of layout
-      body: Row(children: <Widget>[
-        dummyContainer(Colors.red, customFlex: 2),
-        dummyContainer(Colors.teal, customFlex: 3),
-        dummyContainer(Colors.blue, customFlex: 5),
-      ]),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: GridView(
+            //* the gridView is same as listView since there are another named constructor called .builder for both of them
+            //* we can create grid using column of row or row of columns but we the grid will not be flexible for different screen state like (portrait or landscape) and more other reasons like (it support the scroll).
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                //! the below ratio means 3 in width and 1 in height (aspect ratio)
+                childAspectRatio: 3 / 2,
+                //! we treat the GridView as a Column so they have the same main and cross axis
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 20),
+            children: <Widget>[
+              dummyContainer(Colors.red, customFlex: 2),
+              dummyContainer(Colors.teal, customFlex: 3),
+              dummyContainer(Colors.blue, customFlex: 5),
+            ]),
+      ),
 
       bottomNavigationBar: BottomBarWithSheet(
         mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),

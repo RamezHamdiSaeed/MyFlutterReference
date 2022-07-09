@@ -42,3 +42,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use Image Widget properly whether for local or network images.
 - How to use showDatePicker properly with "then" if the DatePicker is selected (fulfilled).
 - How to use Expanded properly to make grids and for stretch the row and column in mainAxisAlignment.
+- How to use GridView and Gradient Widgets properly.
