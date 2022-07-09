@@ -29,13 +29,21 @@ class Genders extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.add_alert),
-        title: const Text('Age Calculator'),
+        title: const Text('age'),
         // actions: const <Widget>[
         //   Icon(Icons.add),
         // ],
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      body: null,
+      body: Container(
+          height: double.infinity,
+          alignment: Alignment.center,
+          //! in case of using url for image we use another named constructor called Image.network
+          child: Image.asset(
+            "assets/images/Self.png",
+            fit: BoxFit.cover,
+            // width: 200.0,
+          )),
       bottomNavigationBar: BottomBarWithSheet(
         mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),
         bottomBarTheme: const BottomBarTheme(
