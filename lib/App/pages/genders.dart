@@ -11,17 +11,17 @@ class Genders extends StatefulWidget {
 }
 
 class _GendersState extends State<Genders> {
-  TextStyle textButtonStyle({required Color color}) {
-    return TextStyle(color: color, shadows: <Shadow>[
-      Shadow(
-        color: color,
-        offset: const Offset(5, 5),
-        blurRadius: 10,
-      )
-    ]);
-  }
+  // TextStyle textButtonStyle({required Color color}) {
+  //   return TextStyle(color: color, shadows: <Shadow>[
+  //     Shadow(
+  //       color: color,
+  //       offset: const Offset(5, 5),
+  //       blurRadius: 10,
+  //     )
+  //   ]);
+  // }
 
-  DateTime selectedDateTime = DateTime.now();
+  // DateTime selectedDateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,48 @@ class _GendersState extends State<Genders> {
     //! not when we need to change the widget by specific variable/s we need to assure that the variable/s is/are not within the build method
     // DateTime selectedDateTime = DateTime.now();
 
-    DateTime minAge({required int age}) {
-      return DateTime(DateTime.now().year - age);
+    // DateTime minAge({required int age}) {
+    //   return DateTime(DateTime.now().year - age);
+    // }
+    Expanded dummyContainer(Color customColor, {int customFlex = 1}) {
+      return Expanded(
+        flex: customFlex,
+        child: Container(
+            height: 60.0,
+            padding: const EdgeInsets.all(20.0),
+            color: customColor),
+      );
     }
 
+    // var datePicker = Padding(
+    //     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+    //     child: Container(
+    //       alignment: Alignment.center,
+    //       child: ElevatedButton(
+    //           child: Text("$selectedDateTime"),
+    //           onPressed: () {
+    //             showDatePicker(
+    //                     context: context,
+    //                     initialDate: minAge(age: 18),
+    //                     firstDate: minAge(age: 50),
+    //                     lastDate: DateTime.now())
+    //                 .then((value) {
+    //               if (value == null) {
+    //                 return;
+    //               }
+    //               setState(() {
+    //                 selectedDateTime = value;
+    //               });
+    //             });
+    //           }),
+    //       //! in case of using url for image we use another named constructor called Image.network
+    //       // child: Image.asset(
+    //       //   "assets/images/Self.png",
+    //       //   fit: BoxFit.cover,
+    //       //   // width: 200.0,
+    //       // )
+    //     ),
+    //   );
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.add_alert),
@@ -48,36 +86,13 @@ class _GendersState extends State<Genders> {
         // ],
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-        child: Container(
-          alignment: Alignment.center,
-          child: ElevatedButton(
-              child: Text("$selectedDateTime"),
-              onPressed: () {
-                showDatePicker(
-                        context: context,
-                        initialDate: minAge(age: 18),
-                        firstDate: minAge(age: 50),
-                        lastDate: DateTime.now())
-                    .then((value) {
-                  if (value == null) {
-                    return;
-                  }
-                  setState(() {
-                    selectedDateTime = value;
-                    print(selectedDateTime);
-                  });
-                });
-              }),
-          //! in case of using url for image we use another named constructor called Image.network
-          // child: Image.asset(
-          //   "assets/images/Self.png",
-          //   fit: BoxFit.cover,
-          //   // width: 200.0,
-          // )
-        ),
-      ),
+      //* there is no stretch value for mainAxisAlignment so we need to expand ,or when we want to specify the (grid)areas of layout
+      body: Row(children: <Widget>[
+        dummyContainer(Colors.red, customFlex: 2),
+        dummyContainer(Colors.teal, customFlex: 3),
+        dummyContainer(Colors.blue, customFlex: 5),
+      ]),
+
       bottomNavigationBar: BottomBarWithSheet(
         mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),
         bottomBarTheme: const BottomBarTheme(
