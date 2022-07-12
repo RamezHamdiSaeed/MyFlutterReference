@@ -123,87 +123,108 @@ class _GendersState extends State<Genders> {
     //         dummyContainer(Colors.blue, customFlex: 5),
     //       ]),
     // );
-
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            drawerListTile(color: Colors.blue),
-            drawerListTile(color: Colors.red),
-            drawerListTile(color: Colors.teal),
-          ],
-        ),
-      ),
-      drawerScrimColor: Theme.of(context).primaryColor.withOpacity(0.5),
-      appBar: AppBar(
-        // leading: const Icon(Icons.add_alert),
-        title: const Text('Color Screens'),
-        // actions: const <Widget>[
-        //   Icon(Icons.add),
-        // ],
-      ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      //* there is no stretch value for mainAxisAlignment so we need to expand ,or when we want to specify the (grid)areas of layout
-      body: null,
-
-      bottomNavigationBar: BottomBarWithSheet(
-        mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),
-        bottomBarTheme: const BottomBarTheme(
-          mainButtonPosition: MainButtonPosition.middle,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
-          ),
-          itemIconColor: Colors.teal,
-          itemTextStyle: TextStyle(
-            color: Colors.teal,
-            fontSize: 10.0,
-          ),
-          selectedItemTextStyle: TextStyle(
-            color: Colors.teal,
-            fontSize: 10.0,
+//* to make internal routing (to add Scaffold within Scaffold through events usually in AppBar (bottom))
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              drawerListTile(color: Colors.blue),
+              drawerListTile(color: Colors.red),
+              drawerListTile(color: Colors.teal),
+            ],
           ),
         ),
-        //* the below statement is used for items with main action button
-        // onSelectItem: (index) => debugPrint('$index'),
-        sheetChild: Center(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
-                child: ListView.builder(
-                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Column(children: <Widget>[
-                      //! I don't need to use map just we need to use spread operator (...)
-                      // ...textFields,
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Card(
-                          shadowColor: Colors.grey,
-                          elevation: 2.0,
-                          color: Colors.white24,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(identities[index].age,
-                                      style: ageTextStyle),
-                                  Text(identities[index].yearOfBirth,
-                                      style: ageTextStyle)
-                                ]),
+        drawerScrimColor: Theme.of(context).primaryColor.withOpacity(0.5),
+        appBar: AppBar(
+          // leading: const Icon(Icons.add_alert),
+          title: const Text('Color Screens'),
+          bottom: const TabBar(
+            tabs: <Widget>[
+              Tab(
+                text: "Reddit",
+              ),
+              Tab(
+                text: "Cloud",
+              ),
+              Tab(
+                text: "Colorize",
+              ),
+            ],
+          ),
+          // actions: const <Widget>[
+          //   Icon(Icons.add),
+          // ],
+        ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        //* there is no stretch value for mainAxisAlignment so we need to expand ,or when we want to specify the (grid)areas of layout
+        body: const TabBarView(children: <Tab>[
+          Tab(icon: Icon(Icons.reddit), text: "Reddit"),
+          Tab(icon: Icon(Icons.cloud_off_rounded), text: "Cloud"),
+          Tab(icon: Icon(Icons.colorize), text: "Colorize"),
+        ]),
+
+        bottomNavigationBar: BottomBarWithSheet(
+          mainActionButtonTheme:
+              const MainActionButtonTheme(color: Colors.teal),
+          bottomBarTheme: const BottomBarTheme(
+            mainButtonPosition: MainButtonPosition.middle,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+            ),
+            itemIconColor: Colors.teal,
+            itemTextStyle: TextStyle(
+              color: Colors.teal,
+              fontSize: 10.0,
+            ),
+            selectedItemTextStyle: TextStyle(
+              color: Colors.teal,
+              fontSize: 10.0,
+            ),
+          ),
+          //* the below statement is used for items with main action button
+          // onSelectItem: (index) => debugPrint('$index'),
+          sheetChild: Center(
+              child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                  child: ListView.builder(
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return Column(children: <Widget>[
+                        //! I don't need to use map just we need to use spread operator (...)
+                        // ...textFields,
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Card(
+                            shadowColor: Colors.grey,
+                            elevation: 2.0,
+                            color: Colors.white24,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(identities[index].age,
+                                        style: ageTextStyle),
+                                    Text(identities[index].yearOfBirth,
+                                        style: ageTextStyle)
+                                  ]),
+                            ),
                           ),
                         ),
-                      ),
-                    ]);
-                  }
+                      ]);
+                    }
 
-                  //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
+                    //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
 
-                  ,
-                ))),
-        items: const [],
+                    ,
+                  ))),
+          items: const [],
+        ),
       ),
     );
   }
