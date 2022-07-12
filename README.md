@@ -48,3 +48,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to send data to the next screen using Navigator.pushNamed() and to the widget (representing the screen) as a prop .
 - How to use Drawer with ListView and ListTile to create a (side) navigation menu.
 - How to use DefaultTabControllers, tabs and tabBarViews(which represents the NoOf Scaffolds equal to NoOf the tabs inside the TabBar) properly to make internal routing (add scaffold within scaffold body)and avoiding to make global routing (to change the scaffold representing the screen to another scaffold).
+-How to use DefaultTabController to enable internal routing then using bottomNavigationBar to pass items (alternative for TabBarView()).

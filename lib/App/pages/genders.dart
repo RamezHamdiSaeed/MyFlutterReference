@@ -1,8 +1,8 @@
 // import 'package:first_flutter_app/App/components/changing_fab_tooltip.dart';
 
 import 'package:flutter/material.dart';
-import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
-import 'package:first_flutter_app/App/models/age.dart';
+// import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
+// import 'package:first_flutter_app/App/models/age.dart';
 import 'package:first_flutter_app/App/pages/blue.dart';
 import 'package:first_flutter_app/App/pages/teal.dart';
 import 'package:first_flutter_app/App/pages/red.dart';
@@ -27,15 +27,22 @@ class _GendersState extends State<Genders> {
 
   // DateTime selectedDateTime = DateTime.now();
 
+  int bNBIndex = 0;
+  changeNBIndex(int index) {
+    setState(() {
+      bNBIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Identity> identities = [
-      Identity(yearOfBirth: "1998"),
-      Identity(yearOfBirth: "1997"),
-      Identity(yearOfBirth: "2000"),
-      Identity(yearOfBirth: "2002")
-    ];
-    TextStyle ageTextStyle = const TextStyle(fontSize: 20);
+    // List<Identity> identities = [
+    //   Identity(yearOfBirth: "1998"),
+    //   Identity(yearOfBirth: "1997"),
+    //   Identity(yearOfBirth: "2000"),
+    //   Identity(yearOfBirth: "2002")
+    // ];
+    // TextStyle ageTextStyle = const TextStyle(fontSize: 20);
     //! not when we need to change the widget by specific variable/s we need to assure that the variable/s is/are not within the build method
     // DateTime selectedDateTime = DateTime.now();
 
@@ -123,7 +130,90 @@ class _GendersState extends State<Genders> {
     //         dummyContainer(Colors.blue, customFlex: 5),
     //       ]),
     // );
+    List<Map<String, dynamic>> internalScreens = [
+      {"title": "Reddit", "icon": const Icon(Icons.reddit)},
+      {"title": "Cloud", "icon": const Icon(Icons.cloud_off_rounded)},
+      {"title": "Colorize", "icon": const Icon(Icons.colorize)}
+    ];
+    List<Tab> pages = [
+      Tab(icon: internalScreens[0]["icon"], text: internalScreens[0]["title"]),
+      Tab(icon: internalScreens[1]["icon"], text: internalScreens[1]["title"]),
+      Tab(icon: internalScreens[2]["icon"], text: internalScreens[2]["title"]),
+    ];
 //* to make internal routing (to add Scaffold within Scaffold through events usually in AppBar (bottom))
+    // var bottomBarWithSheet = BottomBarWithSheet(
+    //   mainActionButtonTheme: const MainActionButtonTheme(color: Colors.teal),
+    //   bottomBarTheme: const BottomBarTheme(
+    //     mainButtonPosition: MainButtonPosition.middle,
+    //     decoration: BoxDecoration(
+    //       color: Colors.white,
+    //       borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+    //     ),
+    //     itemIconColor: Colors.teal,
+    //     itemTextStyle: TextStyle(
+    //       color: Colors.teal,
+    //       fontSize: 10.0,
+    //     ),
+    //     selectedItemTextStyle: TextStyle(
+    //       color: Colors.teal,
+    //       fontSize: 10.0,
+    //     ),
+    //   ),
+    //   //* the below statement is used for items with main action button
+    //   // onSelectItem: (index) => debugPrint('$index'),
+    //   sheetChild: Center(
+    //     child: Padding(
+    //       padding: const EdgeInsets.symmetric(horizontal: 0),
+    //       child: ListView.builder(
+    //         // mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //         itemCount: 3,
+    //         itemBuilder: (context, index) {
+    //           return Column(children: <Widget>[
+    //             //! I don't need to use map just we need to use spread operator (...)
+    //             // ...textFields,
+    //             Padding(
+    //               padding: const EdgeInsets.all(20.0),
+    //               child: Card(
+    //                 shadowColor: Colors.grey,
+    //                 elevation: 2.0,
+    //                 color: Colors.white24,
+    //                 child: Padding(
+    //                   padding: const EdgeInsets.all(8.0),
+    //                   child: Row(
+    //                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //                       children: [
+    //                         Text(identities[index].age, style: ageTextStyle),
+    //                         Text(identities[index].yearOfBirth,
+    //                             style: ageTextStyle)
+    //                       ]),
+    //                 ),
+    //               ),
+    //             ),
+    //           ]);
+    //         }
+
+    //         //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
+
+    //         ,
+    //       ),
+    //     ),
+    //   ),
+    //   items: const [],
+    // );
+    // const tabBar = const TabBar(
+    //   tabs: <Widget>[
+    //     Tab(
+    //       text: "Reddit",
+    //     ),
+    //     Tab(
+    //       text: "Cloud",
+    //     ),
+    //     Tab(
+    //       text: "Colorize",
+    //     ),
+    //   ],
+    // );
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -139,92 +229,33 @@ class _GendersState extends State<Genders> {
         drawerScrimColor: Theme.of(context).primaryColor.withOpacity(0.5),
         appBar: AppBar(
           // leading: const Icon(Icons.add_alert),
-          title: const Text('Color Screens'),
-          bottom: const TabBar(
-            tabs: <Widget>[
-              Tab(
-                text: "Reddit",
-              ),
-              Tab(
-                text: "Cloud",
-              ),
-              Tab(
-                text: "Colorize",
-              ),
-            ],
-          ),
+          title: Text(internalScreens[bNBIndex]["title"]),
+          // bottom: tabBar,
           // actions: const <Widget>[
           //   Icon(Icons.add),
           // ],
         ),
         // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         //* there is no stretch value for mainAxisAlignment so we need to expand ,or when we want to specify the (grid)areas of layout
-        body: const TabBarView(children: <Tab>[
-          Tab(icon: Icon(Icons.reddit), text: "Reddit"),
-          Tab(icon: Icon(Icons.cloud_off_rounded), text: "Cloud"),
-          Tab(icon: Icon(Icons.colorize), text: "Colorize"),
-        ]),
+        body: Center(child: pages[bNBIndex])
+        //  TabBarView(children: pages)
+        ,
 
-        bottomNavigationBar: BottomBarWithSheet(
-          mainActionButtonTheme:
-              const MainActionButtonTheme(color: Colors.teal),
-          bottomBarTheme: const BottomBarTheme(
-            mainButtonPosition: MainButtonPosition.middle,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
-            ),
-            itemIconColor: Colors.teal,
-            itemTextStyle: TextStyle(
-              color: Colors.teal,
-              fontSize: 10.0,
-            ),
-            selectedItemTextStyle: TextStyle(
-              color: Colors.teal,
-              fontSize: 10.0,
-            ),
-          ),
-          //* the below statement is used for items with main action button
-          // onSelectItem: (index) => debugPrint('$index'),
-          sheetChild: Center(
-              child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: ListView.builder(
-                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return Column(children: <Widget>[
-                        //! I don't need to use map just we need to use spread operator (...)
-                        // ...textFields,
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Card(
-                            shadowColor: Colors.grey,
-                            elevation: 2.0,
-                            color: Colors.white24,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(identities[index].age,
-                                        style: ageTextStyle),
-                                    Text(identities[index].yearOfBirth,
-                                        style: ageTextStyle)
-                                  ]),
-                            ),
-                          ),
-                        ),
-                      ]);
-                    }
-
-                    //! we used stack here to make a postfix text indirectly using Stack widget just for practising only
-
-                    ,
-                  ))),
-          items: const [],
-        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: bNBIndex,
+          backgroundColor: Colors.teal,
+          unselectedItemColor: Colors.white70,
+          selectedItemColor: Colors.white,
+          onTap: changeNBIndex,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.reddit), label: "Reddit"),
+            BottomNavigationBarItem(icon: Icon(Icons.cloud), label: "Cloud"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.colorize), label: "Colorize"),
+          ],
+        )
+        // bottomBarWithSheet
+        ,
       ),
     );
   }
