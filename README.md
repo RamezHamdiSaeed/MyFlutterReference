@@ -50,3 +50,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use DefaultTabControllers, tabs and tabBarViews(which represents the NoOf Scaffolds equal to NoOf the tabs inside the TabBar) properly to make internal routing (add scaffold within scaffold body)and avoiding to make global routing (to change the scaffold representing the screen to another scaffold).
 -How to use DefaultTabController to enable internal routing then using bottomNavigationBar to pass items (alternative for TabBarView()).
 -How to move data forward and backward when navigating to other screens globally or internally.
+-how to use slider to change the value of a variable in specific range.
