@@ -25,50 +25,50 @@ class _RedScreenState extends State<RedScreen> {
       appBar: AppBar(
         title: const Text("red Screen"),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Transform.rotate(
-              angle: pi / 4 * sliderValue,
-              child: Container(
-                alignment: Alignment.topCenter,
-                margin: const EdgeInsets.only(top: 50),
-                color: Colors.red,
-                width: sliderValue,
-                height: sliderValue,
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Transform.rotate(
+            angle: pi / 4 * sliderValue,
+            child: Container(
+              transform: Matrix4.translationValues(2, -30, 10),
+              alignment: Alignment.topCenter,
+              margin: const EdgeInsets.only(top: 50),
+              color: Colors.red,
+              width: sliderValue,
+              height: sliderValue,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: [
-                    Text("red Screen with value: ${arguments['color']}"),
-                    Slider(
-                      value: sliderValue,
-                      onChanged: (value) {
-                        setState(() {
-                          sliderValue = value;
-                        });
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 100.0),
+            child: Container(
+              transform: Matrix4.translationValues(0, -150, 0),
+              child: Column(
+                children: [
+                  Text("red Screen with value: ${arguments['color']}"),
+                  Slider(
+                    value: sliderValue,
+                    onChanged: (value) {
+                      setState(() {
+                        sliderValue = value;
+                      });
+                    },
+                    min: 0.0,
+                    max: 100.0,
+                    divisions: 200,
+                    label: "square size",
+                  ),
+                  ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).pop("red");
                       },
-                      min: 0.0,
-                      max: 100.0,
-                      divisions: 200,
-                      label: "square size",
-                    ),
-                    ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.of(context).pop("red");
-                        },
-                        icon: const Icon(Icons.arrow_back_ios_new_outlined),
-                        label: const Text("Back")),
-                  ],
-                ),
+                      icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                      label: const Text("Back")),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
