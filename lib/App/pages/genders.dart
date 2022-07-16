@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:first_flutter_app/App/pages/blue.dart';
 import 'package:first_flutter_app/App/pages/teal.dart';
 import 'package:first_flutter_app/App/pages/red.dart';
+import 'package:first_flutter_app/App/components/myDrawer.dart';
 
 class Genders extends StatefulWidget {
   const Genders({Key? key}) : super(key: key);
@@ -217,15 +218,7 @@ class _GendersState extends State<Genders> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              drawerListTile(color: Colors.blue),
-              drawerListTile(color: Colors.red),
-              drawerListTile(color: Colors.teal),
-            ],
-          ),
-        ),
+        drawer: const MyDrawer(),
         drawerScrimColor: Theme.of(context).primaryColor.withOpacity(0.5),
         appBar: AppBar(
           // leading: const Icon(Icons.add_alert),

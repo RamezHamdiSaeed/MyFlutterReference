@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import '../components/myDrawer.dart';
+
 class TealScreen extends StatelessWidget {
   static const String routName = '/tealScreen';
 
@@ -13,6 +15,7 @@ class TealScreen extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as Map<String, int>;
 
     return Scaffold(
+      drawer: const MyDrawer(),
       appBar: AppBar(
         title: const Text("teal Screen"),
       ),

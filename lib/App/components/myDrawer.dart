@@ -3,8 +3,15 @@ import 'package:first_flutter_app/App/pages/blue.dart';
 import 'package:first_flutter_app/App/pages/teal.dart';
 import 'package:first_flutter_app/App/pages/red.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  List<Widget> attachedLVWidgets = [];
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,16 @@ class MyDrawer extends StatelessWidget {
         ),
         onTap: () {
           Navigator.of(context)
-              .pushReplacementNamed(route, arguments: {'color': color.value});
+              .pushNamed(route, arguments: {'color': color.value}).then(
+            (value) {
+              setState(() {
+                attachedLVWidgets.add(AlertDialog(
+                  title: const Text("AlertDialog"),
+                  content: Text("AlertDialog with value: $value"),
+                ));
+              });
+            },
+          );
         },
       );
     }
@@ -36,6 +52,7 @@ class MyDrawer extends StatelessWidget {
           drawerListTile(color: Colors.blue),
           drawerListTile(color: Colors.red),
           drawerListTile(color: Colors.teal),
+          ...attachedLVWidgets,
         ],
       ),
     );
