@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import "package:flutter/material.dart";
 
 import '../components/myDrawer.dart';
@@ -26,37 +28,43 @@ class _RedScreenState extends State<RedScreen> {
       body: Center(
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.topCenter,
-              margin: const EdgeInsets.only(top: 50),
-              color: Colors.red,
-              width: sliderValue,
-              height: sliderValue,
+            Transform.rotate(
+              angle: pi / 4 * sliderValue,
+              child: Container(
+                alignment: Alignment.topCenter,
+                margin: const EdgeInsets.only(top: 50),
+                color: Colors.red,
+                width: sliderValue,
+                height: sliderValue,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 100.0),
-              child: Column(
-                children: [
-                  Text("red Screen with value: ${arguments['color']}"),
-                  Slider(
-                    value: sliderValue,
-                    onChanged: (value) {
-                      setState(() {
-                        sliderValue = value;
-                      });
-                    },
-                    min: 0.0,
-                    max: 100.0,
-                    divisions: 200,
-                    label: "square size",
-                  ),
-                  ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.of(context).pop("red");
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  children: [
+                    Text("red Screen with value: ${arguments['color']}"),
+                    Slider(
+                      value: sliderValue,
+                      onChanged: (value) {
+                        setState(() {
+                          sliderValue = value;
+                        });
                       },
-                      icon: const Icon(Icons.arrow_back_ios_new_outlined),
-                      label: const Text("Back")),
-                ],
+                      min: 0.0,
+                      max: 100.0,
+                      divisions: 200,
+                      label: "square size",
+                    ),
+                    ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.of(context).pop("red");
+                        },
+                        icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                        label: const Text("Back")),
+                  ],
+                ),
               ),
             ),
           ],
