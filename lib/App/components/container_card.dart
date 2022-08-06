@@ -10,6 +10,8 @@ class CounterCard extends StatefulWidget {
 }
 
 class _CounterCardState extends State<CounterCard> {
+  //! and now we can access the provider directly from the widget to update this specific widget
+  //! using the Provider.of<{ProviderModel}>(context).{changing variable using the methods with notifyListeners(),or using them directly}
   @override
   Widget build(BuildContext context) {
     return Center(

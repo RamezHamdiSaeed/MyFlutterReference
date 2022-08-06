@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
       // we use routes with specified initialRoute to use navigator .pushNamed and organize Navigation Map for Readability
       //! when we are using routes and initialRoute we have to remove home property from MaterialApp
       //* it's better to use route name from the widget representing the page to avoid confusion and long routes
-
+//! we need to surround the parent widget with ChangeNotifierProvider to use the model in the provider
+//! don't forget to specify the create method in the provider to create the model
+//* now we don't need to use the model inside the DashBoardScreen anymore.
       home: ChangeNotifierProvider<Counter>(
           create: (_) => Counter(), child: const DashBoardScreen()),
       theme: ThemeData(
