@@ -1,5 +1,8 @@
 import 'package:first_flutter_app/App/pages/dashboard_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'models/counter.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,7 +15,8 @@ class MyApp extends StatelessWidget {
       //! when we are using routes and initialRoute we have to remove home property from MaterialApp
       //* it's better to use route name from the widget representing the page to avoid confusion and long routes
 
-      home: const DashBoardScreen(),
+      home: ChangeNotifierProvider<Counter>(
+          create: (_) => Counter(), child: const DashBoardScreen()),
       theme: ThemeData(
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(

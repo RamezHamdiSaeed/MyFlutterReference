@@ -11,15 +11,11 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
-  Counter counter = Counter();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("counter")),
-      body: Dashboard(
-        counter: counter,
-      ),
+      body: const DashBoard(),
     );
   }
 }
