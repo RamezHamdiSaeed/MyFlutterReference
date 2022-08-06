@@ -53,3 +53,4 @@ samples, guidance on mobile development, and a full API reference.
 -How to use slider to change the value of a variable in specific range.
 -How to use Transform,Transform.rotate with angle property,Transform.scale with scale property and Transform.translate with translate property.
 -How to use transform property inside the container as well.
+-So far away we facing now the issue to updated deep dive widget all through the code from the parent, in our example we change need to change the the CounterCard we change all the way from the DashBoardScreen to the CounterCard (passing through DashBoard Widget),and now we just need to update (rebuild) the counter card directly so we will need state managers like providers,bloc and GetX..etc.

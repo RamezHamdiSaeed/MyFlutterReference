@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       //! when we are using routes and initialRoute we have to remove home property from MaterialApp
       //* it's better to use route name from the widget representing the page to avoid confusion and long routes
 
-      home: const Dashboard(),
+      home: const DashBoardScreen(),
       theme: ThemeData(
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
