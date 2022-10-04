@@ -37,4 +37,4 @@ samples, guidance on mobile development, and a full API reference.
   
 ### AgeCalculator :
 
-  ![img-1](images/smartmockups_l548aqt2.jpg)
+  ![img-1](images/age_calculator.jpg)
