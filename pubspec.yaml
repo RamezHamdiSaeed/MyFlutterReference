@@ -51,8 +51,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/Self.png
+  # assets:
+    # - assets/images/Self.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -63,13 +63,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # don't forget to that the font: is indented by one space.
-  fonts:
-    - family: Splash
-      fonts:
-        - asset: assets/fonts/Splash/Splash-Regular.ttf
-    - family: Lobster
-      fonts:
-        - asset: assets/fonts/Lobster/Lobster-Regular.ttf
+  # fonts:
+  #   - family: Splash
+  #     fonts:
+  #       - asset: assets/fonts/Splash/Splash-Regular.ttf
+  #   - family: Lobster
+  #     fonts:
+  #       - asset: assets/fonts/Lobster/Lobster-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
