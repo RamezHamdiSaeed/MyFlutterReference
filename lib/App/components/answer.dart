@@ -8,14 +8,23 @@ class Answer extends StatelessWidget {
   final Function() onPress;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(Theme.of(context).primaryColor)),
-        onPressed: onPress,
-        child: Text(
-          questionAnswer,
-          style: const TextStyle(fontSize: 20, color: Colors.white),
-        ));
+    return Column(
+      children: [
+        ElevatedButton(
+            style: ButtonStyle(
+                fixedSize: MaterialStateProperty.all(
+                    Size(MediaQuery.of(context).size.width / 1.05, 45)),
+                backgroundColor:
+                    MaterialStateProperty.all(Theme.of(context).primaryColor)),
+            onPressed: onPress,
+            child: Text(
+              questionAnswer,
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            )),
+        const SizedBox(
+          height: 10,
+        )
+      ],
+    );
   }
 }
