@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       // we use routes with specified initialRoute to use navigator .pushNamed and organize Navigation Map for Readability
       //! when we are using routes and initialRoute we have to remove home property from MaterialApp
       //* it's better to use route name from the widget representing the page to avoid confusion and long routes
-      home: const QuestionAndAnswers(),
+      home: const Survey(),
       theme: ThemeData(
         textButtonTheme: const TextButtonThemeData(),
         // appBarTheme: const AppBarTheme(

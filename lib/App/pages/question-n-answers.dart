@@ -5,32 +5,26 @@ import '../components/answer.dart';
 import '../utils/text.dart';
 import '../utils/color.dart' as theme;
 
-class QuestionAndAnswers extends StatefulWidget {
-  const QuestionAndAnswers({Key? key}) : super(key: key);
+class Survey extends StatefulWidget {
+  const Survey({Key? key}) : super(key: key);
 
   @override
-  State<QuestionAndAnswers> createState() => _QuestionAndAnswersState();
+  State<Survey> createState() => _SurveyState();
 }
 
-class _QuestionAndAnswersState extends State<QuestionAndAnswers> {
+class _SurveyState extends State<Survey> {
   final List<Map<String, dynamic>> questionAndAnswers = [
     {
-      "question": "First Question?",
+      "question": "What Is The Most Beautiful City/Area In You POV?",
       "answers": [
-        "first question first answer",
-        "first question second answer",
-        "first question third answer",
-        "first question fourth answer"
-      ]
+        "Cairo",
+        "Alexandria",
+        "aswan",
+      ],
     },
     {
-      "question": "Second Question?",
-      "answers": [
-        "second question first answer",
-        "second question second answer",
-        "second question third answer",
-        "second question fourth answer"
-      ]
+      "question": "What Is Your Favorite The Programming Language?",
+      "answers": ["Swift", "Java", "Kotlin", "Dart"],
     }
   ];
 
@@ -56,7 +50,7 @@ class _QuestionAndAnswersState extends State<QuestionAndAnswers> {
   Widget build(BuildContext context) {
     List<Widget> result = [
       Text(
-        "Done",
+        "Done!! Thanks For Your Efforts",
         style: TextStyle(fontSize: Size().large),
       ),
       TextButton(
@@ -66,12 +60,12 @@ class _QuestionAndAnswersState extends State<QuestionAndAnswers> {
             });
           },
           child: const Text(
-            "Retake The Quiz?!!",
+            "Retake The Survey?!!",
             style: TextStyle(color: Colors.red),
           ))
     ];
 
-    List<Widget> quizBody = (questionIndex == -1)
+    List<Widget> surveyBody = (questionIndex == -1)
         ? [body(result)]
         : [
             Question(question: questionAndAnswers[questionIndex]["question"]),
@@ -85,7 +79,7 @@ class _QuestionAndAnswersState extends State<QuestionAndAnswers> {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Quiz App", style: TextStyle(color: customTheme.text)),
+          title: Text("Survey", style: TextStyle(color: customTheme.text)),
           actions: [
             Center(
                 child:
@@ -102,7 +96,7 @@ class _QuestionAndAnswersState extends State<QuestionAndAnswers> {
             )
           ],
           backgroundColor: customTheme.buttonsAndAppBarBackGround),
-      body: SizedBox(width: double.infinity, child: body(quizBody)),
+      body: SizedBox(width: double.infinity, child: body(surveyBody)),
     );
   }
 }
