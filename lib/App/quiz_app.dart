@@ -17,11 +17,12 @@ class MyApp extends StatelessWidget {
           style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(Colors.white)),
         ),
-        appBarTheme: const AppBarTheme(
-            foregroundColor: Colors.white,
-            titleTextStyle: TextStyle(fontFamily: "Splash", fontSize: 20)),
+        // appBarTheme: const AppBarTheme(
+        //     foregroundColor: Colors.white,
+        //     titleTextStyle: TextStyle(fontFamily: "Splash", fontSize: 20))
+
         textTheme: const TextTheme(
-          bodyText2: TextStyle(color: Colors.teal, fontFamily: "Splash"),
+          // bodyText2: TextStyle(color: Colors.teal, fontFamily: "Splash"),
           button: TextStyle(
             color: Colors.teal,
             fontSize: 20,
