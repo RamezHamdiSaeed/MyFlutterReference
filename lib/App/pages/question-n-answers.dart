@@ -23,7 +23,7 @@ class _SurveyState extends State<Survey> {
       ],
     },
     {
-      "question": "What Is Your Favorite The Programming Language?",
+      "question": "What Is Your Favorite Programming Language?",
       "answers": ["Swift", "Java", "Kotlin", "Dart"],
     }
   ];
@@ -66,7 +66,7 @@ class _SurveyState extends State<Survey> {
     ];
 
     List<Widget> surveyBody = (questionIndex == -1)
-        ? [body(result)]
+        ? result
         : [
             Question(question: questionAndAnswers[questionIndex]["question"]),
             const SizedBox(height: 20),
@@ -96,7 +96,10 @@ class _SurveyState extends State<Survey> {
             )
           ],
           backgroundColor: customTheme.buttonsAndAppBarBackGround),
-      body: SizedBox(width: double.infinity, child: body(surveyBody)),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(width: double.infinity, child: body(surveyBody)),
+      ),
     );
   }
 }
