@@ -55,3 +55,16 @@ samples, guidance on mobile development, and a full API reference.
 -How to use transform property inside the container as well.
 -How to use Switch widget for theme changing.
 -How to Organize Your Code With Utils....
+  
+### Survey App
+
+#### white Theme
+
+  ![image-1](images/Mock/firstQuestionWhiteTheme.png)
+  ![image-2](images/Mock/anotherQuestionBlackTheme.png)
+
+#### Black Theme
+
+  ![image-1](images/Mock/firstQuestionBlackTheme.png)
+  ![image-2](images/Mock/anotherQuestionWhiteTheme.png)
+  ![image-3](images/Mock/result.png)
