@@ -53,3 +53,4 @@ samples, guidance on mobile development, and a full API reference.
 -How to use slider to change the value of a variable in specific range.
 -How to use Transform,Transform.rotate with angle property,Transform.scale with scale property and Transform.translate with translate property.
 -How to use transform property inside the container as well.
+-How to use Switch widget for theme changing.

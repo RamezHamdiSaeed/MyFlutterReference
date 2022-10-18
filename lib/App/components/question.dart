@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import '../utils/text.dart';
+import '../utils/color.dart' as theme;
 
 class Question extends StatelessWidget {
   final String question;
-  const Question(this.question, {super.key});
+
+  const Question({Key? key, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(question, style: const TextStyle(fontSize: 20));
+    return Text(question, style: TextStyle(fontSize: Size().large));
   }
 }

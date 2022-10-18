@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import '../utils/color.dart' as theme;
 
 class Answer extends StatelessWidget {
-  const Answer({Key? key, required this.questionAnswer, required this.onPress})
+  const Answer(
+      {Key? key,
+      required this.questionAnswer,
+      required this.onPress,
+      required this.customTheme})
       : super(key: key);
 
   final String questionAnswer;
   final Function() onPress;
+  final theme.Theme customTheme;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,12 +20,12 @@ class Answer extends StatelessWidget {
             style: ButtonStyle(
                 fixedSize: MaterialStateProperty.all(
                     Size(MediaQuery.of(context).size.width / 1.05, 45)),
-                backgroundColor:
-                    MaterialStateProperty.all(Theme.of(context).primaryColor)),
+                backgroundColor: MaterialStateProperty.all(
+                    customTheme.buttonsAndAppBarBackGround)),
             onPressed: onPress,
             child: Text(
               questionAnswer,
-              style: const TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: 20, color: customTheme.text),
             )),
         const SizedBox(
           height: 10,
