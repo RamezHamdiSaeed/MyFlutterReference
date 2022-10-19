@@ -62,9 +62,9 @@ samples, guidance on mobile development, and a full API reference.
 
   ![image-1](images/Mock/firstQuestionWhiteTheme.png)
   ![image-2](images/Mock/anotherQuestionWhiteTheme.png)
- ![image-3](images/Mock/result.png)
 
 #### Black Theme
 
   ![image-1](images/Mock/firstQuestionBlackTheme.png)
   ![image-2](images/Mock/anotherQuestionBlackTheme.png)
+ ![image-3](images/Mock/result.png)
