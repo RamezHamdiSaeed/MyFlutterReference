@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:first_flutter_app/App/quiz_app.dart';
+import './app/screens/loading_screen.dart';
 
 main() {
   runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: LoadingScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
 }
