@@ -19,7 +19,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
           child: ElevatedButton(
         //! i want to lunch url from the app when the below button is pressed and if there is a preinstalled mobile app it will be opened in the mobile app
         onPressed: () async {
-          if (!await launchUrl(Uri.parse(url))) {
+          if (!await launchUrl(Uri.parse(url),
+              mode: LaunchMode.externalApplication)) {
             throw 'Could not launch $url';
           }
           setState(() {
