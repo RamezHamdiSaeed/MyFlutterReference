@@ -1,29 +1,33 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../models/api_handler.dart' as apihandler;
+import 'package:url_launcher/url_launcher.dart';
 
-class LoadingScreen extends StatelessWidget {
+class LoadingScreen extends StatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoadingScreen> createState() => _LoadingScreenState();
+}
+
+class _LoadingScreenState extends State<LoadingScreen> {
+  String url = "https://www.youtube.com/";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("API Connection Text")),
       body: Center(
-        child: StreamBuilder(
-            stream:
-                Stream.periodic(const Duration(seconds: 1), (val) => val + 1),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasData) {
-                final data = snapshot.data as int;
-                return Text("seconds:$data");
-              } else {
-                return const Text("Something Went Wrong, try again later");
-              }
-            }),
-      ),
+          child: ElevatedButton(
+        //! i want to lunch url from the app when the below button is pressed and if there is a preinstalled mobile app it will be opened in the mobile app
+        onPressed: () async {
+          if (!await launchUrl(Uri.parse(url))) {
+            throw 'Could not launch $url';
+          }
+          setState(() {
+            url = "couldn't launch";
+          });
+        },
+        child: Text("url:$url"),
+      )),
     );
   }
 }

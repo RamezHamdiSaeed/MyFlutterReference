@@ -57,3 +57,4 @@ samples, guidance on mobile development, and a full API reference.
 -How to Organize Your Code With Utils....
 -How to Use the FutureBuilder as an alternative for Future using .
 -How to Use the StreamBuilder as an alternative for Stream using .
+-how to lunch any url using the url_launcher package from pub.dev and control whether if we want to lunch on webview mode or its pre installed mobile app .
