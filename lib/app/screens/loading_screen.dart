@@ -40,6 +40,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
     setPersistentNotCriticalData("Ramez Hamdi Saeed Ebrahim");
   }
 
+//! It's good practice that if we want to clear the shared preferences when finishing the deleing with particular Widget ,so we do it in dispose built in method
+//! @override
+// !  void dispose() {
+//!    // TODO: implement dispose
+// !   super.dispose();
+  //* here
+// !  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
