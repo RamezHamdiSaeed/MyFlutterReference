@@ -17,10 +17,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
       appBar: AppBar(title: const Text("API Connection Text")),
       body: Center(
           child: ElevatedButton(
-        //! i want to lunch url from the app when the below button is pressed and if there is a preinstalled mobile app it will be opened in the mobile app
+        //! i want to lunch url from the app when the below button is pressed and if there is a preinstalled mobile app it won't be opened in the mobile app
         onPressed: () async {
-          if (!await launchUrl(Uri.parse(url),
-              mode: LaunchMode.externalApplication)) {
+          if (!await launchUrl(
+            Uri.parse(url),
+          )) {
             throw 'Could not launch $url';
           }
           setState(() {
