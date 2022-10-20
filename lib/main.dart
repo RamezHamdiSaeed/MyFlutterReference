@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import './app/screens/loading_screen.dart';
+import 'app/screens/user_account.dart';
+import './app/screens/sign_up_form.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-main() {
+//ToDo: implement signUp screen once and if the data entered from the user ,the app will begin with home page directly not the signUp screen
+var pref;
+main() async {
+//! if we need to make the main async it's good practice to use the below statement
+  WidgetsFlutterBinding.ensureInitialized();
+  pref = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
@@ -10,8 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LoadingScreen(),
+    return MaterialApp(
+      home: (pref.containsKey("email") && pref.containsKey("password"))
+          ? const UserAccount()
+          : SignUpForm(),
       debugShowCheckedModeBanner: false,
     );
   }
