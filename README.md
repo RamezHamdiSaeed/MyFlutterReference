@@ -69,6 +69,8 @@ samples, guidance on mobile development, and a full API reference.
 - How to deal with FloatingActionButtons in miniStyle.
 - How to configure the size of elements to be responsive using mediaQuery.
 - How to use the text base line correctly without errors.
-- how to change the name and the icon of the app on android (AndroidManifest.xml located at android/app/src/main) and change the android:label) and ios (info.plist (located at ios/Runner) and change the <key>CFBundleName</key>
+- How to change the name and the icon of the app on android (AndroidManifest.xml located at android/app/src/main) and change the android:label) and ios (info.plist (located at ios/Runner) and change the <key>CFBundleName</key>
 <string>App Name</string>") using flutter_luncher_icons package from pub.dev and make sure to follow all the instructions from the package README.md .
-- how to use toast for info (warning also) messages to the users.
+- How to use toast for info (warning also) messages to the users.
+- How to use app bar to add leading and actions.
+- How to use custom app bar with extended features .
