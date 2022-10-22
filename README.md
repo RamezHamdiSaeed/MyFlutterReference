@@ -68,3 +68,4 @@ samples, guidance on mobile development, and a full API reference.
 -Using Expanded to use every fractions of space in varying screens.
 -How to deal with FloatingActionButtons in miniStyle.
 -How to configure the size of elements to be responsive using mediaQuery.
+-How to use the text base line correctly without errors.

@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               ),
               iconTextButton("Female", !isMale)
             ]),
-            rowOfInputs([]),
+            rowOfInputs([sliderManipulator("Height", "M", heightInM)]),
             rowOfInputs([
               counterManipulator(
                 "Weight",
@@ -101,6 +101,8 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(left: 25.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
               children: [
                 Text((text == "Weight") ? "$weightInKG" : "$age",
                     style: Theme.of(context).textTheme.headline1),
@@ -143,6 +145,56 @@ class _HomePageState extends State<HomePage> {
             ],
           )
         ],
+      ),
+    ));
+  }
+
+  Expanded sliderManipulator(
+      String text, String measureUnit, double sliderDefaultValue) {
+    return Expanded(
+        child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: Colors.black26),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              text,
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //! to put the measureUnit Text  to the same line as the other Texts in this row we need to pass value to textBaseline
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.alphabetic,
+                children: [
+                  Text(heightInM.toString(),
+                      style: Theme.of(context).textTheme.headline1),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    measureUnit,
+                    style: Theme.of(context).textTheme.headline3,
+                  )
+                ],
+              ),
+            ),
+            Slider(
+              value: heightInM,
+              onChanged: (newVal) => setState(() {
+                heightInM = double.parse(newVal.toStringAsFixed(2));
+              }),
+              min: 0.20,
+              max: 3.0,
+            ),
+          ],
+        ),
       ),
     ));
   }
