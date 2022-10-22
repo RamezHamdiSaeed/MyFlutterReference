@@ -16,12 +16,21 @@ class BMI extends StatelessWidget {
       theme: ThemeData(
           appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
           canvasColor: const Color.fromARGB(255, 83, 83, 83),
+          iconTheme: const IconThemeData(color: Colors.white),
           textTheme: const TextTheme(
               headline1: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900),
+              headline2: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold))),
-      home: HomePage(),
+                  fontWeight: FontWeight.w900),
+              headline3: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w900))),
+      home: const HomePage(),
       //const Result(
       //   age: 25,
       //   heightInM: 1.7,

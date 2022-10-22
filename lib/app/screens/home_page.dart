@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_reference/app/components/counter_manipulator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,7 +31,21 @@ class _HomePageState extends State<HomePage> {
               iconTextButton("Female", !isMale)
             ]),
             rowOfInputs([]),
-            rowOfInputs([])
+            rowOfInputs([
+              const CounterManipulator(
+                text: "Weight",
+                counterDefaultValue: 50,
+                measureUnit: "KG",
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              const CounterManipulator(
+                text: "Age",
+                counterDefaultValue: 30,
+                measureUnit: "Y",
+              )
+            ])
           ],
         ),
       ))),
@@ -71,7 +85,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Text(
               text,
-              style: const TextStyle(color: Colors.white),
+              style: Theme.of(context).textTheme.headline2,
             )
           ],
         ),

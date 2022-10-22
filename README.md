@@ -58,11 +58,12 @@ samples, guidance on mobile development, and a full API reference.
 -How to Use the FutureBuilder as an alternative for Future usage .
 -How to Use the StreamBuilder as an alternative for Stream usage .
 -how to lunch any url using the url_launcher package from pub.dev and control whether if we want to lunch on webview mode or its pre installed mobile app .
--how to save the persistent non-critical data using the shared_preferences package from pub.dev .
--how to use the DefaultTextStyle Widget .
--how to use the shared preferences for authentication (good practice for Guest account).
--how to change the textTheme of the MaterialApp Widget.
--how to use textAlign for long text.
--how to deal with the warning messages for convenient development process customized for  the project.
--how to change the canvasColor of the MaterialApp Widget.
+-How to save the persistent non-critical data using the shared_preferences package from pub.dev .
+-How to use the DefaultTextStyle Widget .
+-How to use the shared preferences for authentication (good practice for Guest account).
+-How to change the textTheme of the MaterialApp Widget.
+-How to use textAlign for long text.
+-How to deal with the warning messages for convenient development process customized for  the project.
+-How to change the canvasColor of the MaterialApp Widget.
 -Using Expanded to use every fractions of space in varying screens.
+-How to deal with FloatingActionButtons in miniStyle.
