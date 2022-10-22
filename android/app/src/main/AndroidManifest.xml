@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.first_flutter_app">
    <application
-        android:label="first_flutter_app"
-        android:name="${applicationName}"
+        android:label="BMI"
+        android:name="${BMI}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
