@@ -2,7 +2,7 @@
     package="com.example.first_flutter_app">
    <application
         android:label="BMI"
-        android:name="${BMI}"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
