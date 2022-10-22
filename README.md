@@ -48,26 +48,26 @@ samples, guidance on mobile development, and a full API reference.
 - How to send data to the next screen using Navigator.pushNamed() and to the widget (representing the screen) as a prop .
 - How to use Drawer with ListView and ListTile to create a (side) navigation menu.
 - How to use DefaultTabControllers, tabs and tabBarViews(which represents the NoOf Scaffolds equal to NoOf the tabs inside the TabBar) properly to make internal routing (add scaffold within scaffold body)and avoiding to make global routing (to change the scaffold representing the screen to another scaffold).
--How to use DefaultTabController to enable internal routing then using bottomNavigationBar to pass items (alternative for TabBarView()).
--How to move data forward and backward when navigating to other screens globally or internally.
--How to use slider to change the value of a variable in specific range.
--How to use Transform,Transform.rotate with angle property,Transform.scale with scale property and Transform.translate with translate property.
--How to use transform property inside the container as well.
--How to use Switch widget for theme changing.
--How to Organize Your Code With Utils....
--How to Use the FutureBuilder as an alternative for Future usage .
--How to Use the StreamBuilder as an alternative for Stream usage .
--how to lunch any url using the url_launcher package from pub.dev and control whether if we want to lunch on webview mode or its pre installed mobile app .
--How to save the persistent non-critical data using the shared_preferences package from pub.dev .
--How to use the DefaultTextStyle Widget .
--How to use the shared preferences for authentication (good practice for Guest account).
--How to change the textTheme of the MaterialApp Widget.
--How to use textAlign for long text.
--How to deal with the warning messages for convenient development process customized for  the project.
--How to change the canvasColor of the MaterialApp Widget.
--Using Expanded to use every fractions of space in varying screens.
--How to deal with FloatingActionButtons in miniStyle.
--How to configure the size of elements to be responsive using mediaQuery.
--How to use the text base line correctly without errors.
--how to change the name and the icon of the app on android (AndroidManifest.xml located at android/app/src/main) and change the android:label) and ios (info.plist (located at ios/Runner) and change the <key>CFBundleName</key>
+- How to use DefaultTabController to enable internal routing then using bottomNavigationBar to pass items (alternative for TabBarView()).
+- How to move data forward and backward when navigating to other screens globally or internally.
+- How to use slider to change the value of a variable in specific range.
+- How to use Transform,Transform.rotate with angle property,Transform.scale with scale property and Transform.translate with translate property.
+- How to use transform property inside the container as well.
+- How to use Switch widget for theme changing.
+- How to Organize Your Code With Utils....
+- How to Use the FutureBuilder as an alternative for Future usage .
+- How to Use the StreamBuilder as an alternative for Stream usage .
+- how to lunch any url using the url_launcher package from pub.dev and control whether if we want to lunch on webview mode or its pre installed mobile app .
+- How to save the persistent non-critical data using the shared_preferences package from pub.dev .
+- How to use the DefaultTextStyle Widget .
+- How to use the shared preferences for authentication (good practice for Guest account).
+- How to change the textTheme of the MaterialApp Widget.
+- How to use textAlign for long text.
+- How to deal with the warning messages for convenient development process customized for  the project.
+- How to change the canvasColor of the MaterialApp Widget.
+- Using Expanded to use every fractions of space in varying screens.
+- How to deal with FloatingActionButtons in miniStyle.
+- How to configure the size of elements to be responsive using mediaQuery.
+- How to use the text base line correctly without errors.
+- how to change the name and the icon of the app on android (AndroidManifest.xml located at android/app/src/main) and change the android:label) and ios (info.plist (located at ios/Runner) and change the <key>CFBundleName</key>
 <string>App Name</string>") using flutter_luncher_icons package from pub.dev and make sure to follow all the instructions from the package README.md .
