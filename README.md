@@ -64,3 +64,4 @@ samples, guidance on mobile development, and a full API reference.
 -how to change the textTheme of the MaterialApp Widget.
 -how to use textAlign for long text.
 -how to deal with the warning messages for convenient development process customized for  the project.
+-how to change the canvasColor of the MaterialApp Widget.

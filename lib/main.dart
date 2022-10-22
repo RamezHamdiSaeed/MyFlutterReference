@@ -14,10 +14,12 @@ class BMI extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+          appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
+          canvasColor: const Color.fromARGB(255, 83, 83, 83),
           textTheme: const TextTheme(
               headline1: TextStyle(
                   fontSize: 20,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold))),
       home: const Result(
         age: 25,
