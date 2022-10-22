@@ -65,3 +65,4 @@ samples, guidance on mobile development, and a full API reference.
 -how to use textAlign for long text.
 -how to deal with the warning messages for convenient development process customized for  the project.
 -how to change the canvasColor of the MaterialApp Widget.
+-Using Expanded to use every fractions of space in varying screens.

@@ -34,7 +34,8 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("Your Result")),
+        title: const Text("Your Result"),
+        centerTitle: true,
       ),
       //! we use the SafeArea to avoid the problems of notched screens
       //! since the BMI is recommended to be double rounded by 2 digits
