@@ -71,3 +71,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use the text base line correctly without errors.
 - how to change the name and the icon of the app on android (AndroidManifest.xml located at android/app/src/main) and change the android:label) and ios (info.plist (located at ios/Runner) and change the <key>CFBundleName</key>
 <string>App Name</string>") using flutter_luncher_icons package from pub.dev and make sure to follow all the instructions from the package README.md .
+- how to use toast for info (warning also) messages to the users.
