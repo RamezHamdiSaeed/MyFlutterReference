@@ -55,9 +55,12 @@ samples, guidance on mobile development, and a full API reference.
 -How to use transform property inside the container as well.
 -How to use Switch widget for theme changing.
 -How to Organize Your Code With Utils....
--How to Use the FutureBuilder as an alternative for Future using .
--How to Use the StreamBuilder as an alternative for Stream using .
+-How to Use the FutureBuilder as an alternative for Future usage .
+-How to Use the StreamBuilder as an alternative for Stream usage .
 -how to lunch any url using the url_launcher package from pub.dev and control whether if we want to lunch on webview mode or its pre installed mobile app .
 -how to save the persistent non-critical data using the shared_preferences package from pub.dev .
 -how to use the DefaultTextStyle Widget .
 -how to use the shared preferences for authentication (good practice for Guest account).
+-how to change the textTheme of the MaterialApp Widget.
+-how to use textAlign for long text.
+-how to deal with the warning messages for convenient development process customized for  the project.

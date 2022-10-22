@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
-import 'app/screens/user_account.dart';
-import './app/screens/sign_up_form.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import './app/screens/result.dart';
 
-//ToDo: implement signUp screen once and if the data entered from the user ,the app will begin with home page directly not the signUp screen
-var pref;
-main() async {
-//! if we need to make the main async it's good practice to use the below statement
-  WidgetsFlutterBinding.ensureInitialized();
-  pref = await SharedPreferences.getInstance();
-  runApp(const MyApp());
+//ToDo: develop BMI App
+//! beginning with result screen just for now
+main() {
+  runApp(const BMI());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class BMI extends StatelessWidget {
+  const BMI({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: (pref.containsKey("email") && pref.containsKey("password"))
-          ? const UserAccount()
-          : SignUpForm(),
+      theme: ThemeData(
+          textTheme: const TextTheme(
+              headline1: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold))),
+      home: const Result(
+        age: 25,
+        heightInM: 1.7,
+        isMale: true,
+        weightInKG: 60,
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
