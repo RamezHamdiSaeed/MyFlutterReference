@@ -67,3 +67,4 @@ samples, guidance on mobile development, and a full API reference.
 -How to change the canvasColor of the MaterialApp Widget.
 -Using Expanded to use every fractions of space in varying screens.
 -How to deal with FloatingActionButtons in miniStyle.
+-How to configure the size of elements to be responsive using mediaQuery.

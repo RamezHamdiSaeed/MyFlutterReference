@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Result extends StatelessWidget {
+class Result extends StatefulWidget {
   final bool isMale;
   final int age;
   final double heightInM;
@@ -13,8 +13,14 @@ class Result extends StatelessWidget {
     required this.heightInM,
     required this.weightInKG,
   }) : super(key: key);
+
+  @override
+  State<Result> createState() => _ResultState();
+}
+
+class _ResultState extends State<Result> {
   double get bMI {
-    return weightInKG / (heightInM * heightInM);
+    return widget.weightInKG / (widget.heightInM * widget.heightInM);
   }
 
   String get bMIMessage {
@@ -28,6 +34,11 @@ class Result extends StatelessWidget {
     else
       message = "thin";
     return message;
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -49,10 +60,10 @@ class Result extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("Gender : ${isMale ? "Male" : "Female"}"),
-                  Text("Age : $age years"),
-                  Text("weight : $weightInKG KG"),
-                  Text("Height : $heightInM m"),
+                  Text("Gender : ${widget.isMale ? "Male" : "Female"}"),
+                  Text("Age : ${widget.age} years"),
+                  Text("weight : ${widget.weightInKG} KG"),
+                  Text("Height : ${widget.heightInM} m"),
                   Text("BMI Number:${bMI.toStringAsFixed(2)}"),
                   Text("BMI : $bMIMessage"),
                 ],
