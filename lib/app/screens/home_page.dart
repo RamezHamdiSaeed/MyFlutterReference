@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:another_flushbar/flushbar.dart';
-// import 'package:another_flushbar/flushbar_helper.dart';
-// import 'package:another_flushbar/flushbar_route.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> carouselSliderImages = [
+    "assets/images/carouselSlider/s1.jpg",
+    "assets/images/carouselSlider/s2.jpg",
+    "assets/images/carouselSlider/s3.jpg"
+  ];
 //* adding leading Icon
   @override
   Widget build(BuildContext context) {
@@ -51,31 +54,28 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
-              child: Center(
-                  child: Column(
-            children: const [
-              SizedBox(
-                  height: 30,
-                  width: double.infinity,
-                  child: Text(
-                      "this is text without softWrap or overflow customization")),
-              SizedBox(
-                  height: 30,
-                  width: double.infinity,
-                  child: Text(
-                    "this is text with softWrap And/Or overflow customization",
-                    overflow: TextOverflow.fade,
-                    //  softWrap: false, //! used to prevent the text to break line to a new line
-                  )),
-              SelectableText(
-                "this is Text which you able to select characters to copy or...",
-                toolbarOptions: ToolbarOptions(
-                    copy:
-                        true), //!if you put this line you can no longer copy or do any stuff for selected text  unless you customized the Tool Bar Options
-                //  softWrap: false, //! used to prevent the text to break line to a new line
-              )
+              child: ListView(
+            children: [
+              const Center(
+                  child: Text("carousel Slider for images or cards...")),
+              const SizedBox(
+                height: 20,
+              ),
+              //! you can use CarouselSlider as same as ListView () and ListView.builder (CarouselSlider() and CarouselSlider.builder())
+              CarouselSlider.builder(
+                  itemCount: carouselSliderImages.length,
+                  itemBuilder: (context, index, pageIndex) => Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Image.asset(
+                          carouselSliderImages[index],
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                  options: CarouselOptions(
+                      autoPlay: true,
+                      height: MediaQuery.of(context).size.height / 3))
             ],
-          )))
+          )),
         ],
       )),
       floatingActionButton: FloatingActionButton(
