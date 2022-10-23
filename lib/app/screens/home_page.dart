@@ -14,10 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 //* adding leading Icon
-  String appBarTitleSaveStatus = "*";
-
-  String text = "Overwritten Text";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,28 +43,44 @@ class _HomePageState extends State<HomePage> {
                       child: Icon(Icons.remove_circle_rounded),
                     )
                   ],
-                  title: Text("MoreUI $appBarTitleSaveStatus",
-                      style: const TextStyle(color: Colors.black)),
+                  title: const Text("MoreUI",
+                      style: TextStyle(color: Colors.black)),
                   centerTitle: true,
                 )
               ],
             ),
           ),
-          Expanded(child: Center(child: Text(text)))
+          Expanded(
+              child: Center(
+                  child: Column(
+            children: const [
+              SizedBox(
+                  height: 30,
+                  width: double.infinity,
+                  child: Text(
+                      "this is text without softWrap or overflow customization")),
+              SizedBox(
+                  height: 30,
+                  width: double.infinity,
+                  child: Text(
+                    "this is text with softWrap And/Or overflow customization",
+                    overflow: TextOverflow.fade,
+                    //  softWrap: false, //! used to prevent the text to break line to a new line
+                  )),
+              SelectableText(
+                "this is Text which you able to select characters to copy or...",
+                toolbarOptions: ToolbarOptions(
+                    copy:
+                        true), //!if you put this line you can no longer copy or do any stuff for selected text  unless you customized the Tool Bar Options
+                //  softWrap: false, //! used to prevent the text to break line to a new line
+              )
+            ],
+          )))
         ],
       )),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
-          onPressed: () async {
-            await Flushbar(
-              //! if we want to add stylized title we need to use Text widget so we can pass it to messageText
-              //! messageText:Text("",style:TextStyle());
-              title: 'Unsaved',
-              message: 'Your Text Is Unsaved ',
-              duration: const Duration(seconds: 3),
-            ).show(context);
-            // This trailing co
-          },
+          onPressed: () {},
           child: const Icon(Icons.save)),
     );
   }
@@ -79,12 +91,7 @@ class _HomePageState extends State<HomePage> {
       content: const Text("Saved The Modifications"),
       backgroundColor: Colors.red.withOpacity(0.3),
       action: SnackBarAction(
-        onPressed: () {
-          setState(() {
-            appBarTitleSaveStatus = "";
-            text = "Original Text";
-          });
-        },
+        onPressed: () {},
         label: "UnDo",
         textColor: Colors.white,
       ),
