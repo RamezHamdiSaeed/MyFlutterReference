@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:another_flushbar/flushbar.dart';
+// import 'package:another_flushbar/flushbar_helper.dart';
+// import 'package:another_flushbar/flushbar_route.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,11 +59,15 @@ class _HomePageState extends State<HomePage> {
       )),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
-          //! you need to pass the context
-          onPressed: () {
-            //! notice we cannot use the showSnackBar directly like showDialog
-            ScaffoldMessenger.of(context)
-                .showSnackBar(savedStatusSnackBarWithUndo());
+          onPressed: () async {
+            await Flushbar(
+              //! if we want to add stylized title we need to use Text widget so we can pass it to messageText
+              //! messageText:Text("",style:TextStyle());
+              title: 'Unsaved',
+              message: 'Your Text Is Unsaved ',
+              duration: const Duration(seconds: 3),
+            ).show(context);
+            // This trailing co
           },
           child: const Icon(Icons.save)),
     );

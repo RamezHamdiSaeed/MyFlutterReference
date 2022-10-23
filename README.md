@@ -76,3 +76,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use custom app bar with extended features .
 - How to use showDialog,AlertDialog,Divider to make a custom alert dialog.
 - How to use snackBars using ScaffoldMessenger.of(context).showSnackBar(snackBar).
+- How to use flushBar from pub.dev with benefits like  easy alignment of its content and itself according to the scaffold, not like the snackbar.
