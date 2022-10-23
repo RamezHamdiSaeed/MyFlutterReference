@@ -75,3 +75,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use app bar to add leading and actions.
 - How to use custom app bar with extended features .
 - How to use showDialog,AlertDialog,Divider to make a custom alert dialog.
+- How to use snackBars using ScaffoldMessenger.of(context).showSnackBar(snackBar).

@@ -3,46 +3,85 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
 //* adding leading Icon
-//* adding trailing Icons by passing them to actions
-//! using customized app bar
+  String appBarTitleSaveStatus = "*";
+
+  String text = "Overwritten Text";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.black, Colors.white, Colors.black])),
+          child: Column(
+        children: [
+          Expanded(
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  flexibleSpace: Container(
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                      Colors.black,
+                      Colors.white,
+                      Colors.black
+                    ])),
+                  ),
+                  leading: const Icon(Icons.account_balance_sharp),
+                  actions: const [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.account_balance_wallet),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.remove_circle_rounded),
+                    )
+                  ],
+                  title: Text("MoreUI $appBarTitleSaveStatus",
+                      style: const TextStyle(color: Colors.black)),
+                  centerTitle: true,
+                )
+              ],
             ),
-            leading: const Icon(Icons.account_balance_sharp),
-            actions: const [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.account_balance_wallet),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.remove_circle_rounded),
-              )
-            ],
-            title: const Text("MoreUI", style: TextStyle(color: Colors.black)),
-            centerTitle: true,
-          )
+          ),
+          Expanded(child: Center(child: Text(text)))
         ],
       )),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
           //! you need to pass the context
           onPressed: () {
-            exitConfirmDialog(context);
+            //! notice we cannot use the showSnackBar directly like showDialog
+            ScaffoldMessenger.of(context)
+                .showSnackBar(savedStatusSnackBarWithUndo());
           },
-          child: const Icon(Icons.warning)),
+          child: const Icon(Icons.save)),
+    );
+  }
+
+  SnackBar savedStatusSnackBarWithUndo() {
+    return SnackBar(
+      duration: const Duration(seconds: 5),
+      content: const Text("Saved The Modifications"),
+      backgroundColor: Colors.red.withOpacity(0.3),
+      action: SnackBarAction(
+        onPressed: () {
+          setState(() {
+            appBarTitleSaveStatus = "";
+            text = "Original Text";
+          });
+        },
+        label: "UnDo",
+        textColor: Colors.white,
+      ),
     );
   }
 
