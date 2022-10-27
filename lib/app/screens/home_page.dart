@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,11 +9,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> carouselSliderImages = [
-    "assets/images/carouselSlider/s1.jpg",
-    "assets/images/carouselSlider/s2.jpg",
-    "assets/images/carouselSlider/s3.jpg"
-  ];
+  Map<String, String> quiz = {
+    "Question": "What Is Your Gender?",
+    "Answer": "4"
+  };
+  int radioButtonIndex = 0;
+  Gender? genderIndicator = Gender.male;
 //* adding leading Icon
   @override
   Widget build(BuildContext context) {
@@ -54,28 +53,35 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
+              flex: 3,
               child: ListView(
-            children: [
-              const Center(
-                  child: Text("carousel Slider for images or cards...")),
-              const SizedBox(
-                height: 20,
-              ),
-              //! you can use CarouselSlider as same as ListView () and ListView.builder (CarouselSlider() and CarouselSlider.builder())
-              CarouselSlider.builder(
-                  itemCount: carouselSliderImages.length,
-                  itemBuilder: (context, index, pageIndex) => Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Image.asset(
-                          carouselSliderImages[index],
-                          fit: BoxFit.fill,
-                        ),
+                children: [
+                  Center(
+                      child: Text(
+                    quiz["Question"]!,
+                  )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                      child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          radioButton(Gender.male),
+                          const Text("Male")
+                        ],
                       ),
-                  options: CarouselOptions(
-                      autoPlay: true,
-                      height: MediaQuery.of(context).size.height / 3))
-            ],
-          )),
+                      Row(
+                        children: [
+                          radioButton(Gender.female),
+                          const Text("Female")
+                        ],
+                      )
+                    ],
+                  ))
+                ],
+              )),
         ],
       )),
       floatingActionButton: FloatingActionButton(
@@ -83,6 +89,17 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {},
           child: const Icon(Icons.save)),
     );
+  }
+
+  Radio radioButton(Gender gender) {
+    return Radio<Gender>(
+        groupValue: genderIndicator,
+        value: gender,
+        onChanged: (val) {
+          setState(() {
+            genderIndicator = val;
+          });
+        });
   }
 
   SnackBar savedStatusSnackBarWithUndo() {
@@ -148,3 +165,5 @@ class _HomePageState extends State<HomePage> {
             ));
   }
 }
+
+enum Gender { male, female }
