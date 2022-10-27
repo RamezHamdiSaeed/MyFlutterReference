@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                   Center(
                       child: Text(
                     quiz["Question"]!,
+                    style: Theme.of(context).textTheme.headline5,
                   )),
                   const SizedBox(
                     height: 20,
@@ -66,18 +67,8 @@ class _HomePageState extends State<HomePage> {
                   Center(
                       child: Column(
                     children: [
-                      Row(
-                        children: [
-                          radioButton(Gender.male),
-                          const Text("Male")
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          radioButton(Gender.female),
-                          const Text("Female")
-                        ],
-                      )
+                      radioButton(Gender.male),
+                      radioButton(Gender.female),
                     ],
                   ))
                 ],
@@ -91,8 +82,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Radio radioButton(Gender gender) {
-    return Radio<Gender>(
+  RadioListTile radioButton(Gender gender) {
+    return RadioListTile<Gender>(
+        title: Text(
+            "${gender.name[0].toUpperCase()}${gender.name.substring(1).toLowerCase()}"),
         groupValue: genderIndicator,
         value: gender,
         onChanged: (val) {
