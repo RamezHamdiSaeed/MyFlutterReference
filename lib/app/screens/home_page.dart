@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'package:flutter/material.dart';
 
@@ -9,9 +10,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Map<String, String> quiz = {
-    "Question": "What Is Your Gender?",
-    "Answer": "4"
+  Map<String, bool> programmingLanguages = {
+    "Dart": true,
+    "JavaScript": true,
+    "TypeScript": true,
+    "Java": true,
+    "Python": true,
+    "C": false
   };
   int radioButtonIndex = 0;
   Gender? genderIndicator = Gender.male;
@@ -54,24 +59,24 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
               flex: 3,
-              child: ListView(
-                children: [
-                  Center(
-                      child: Text(
-                    quiz["Question"]!,
-                    style: Theme.of(context).textTheme.headline5,
-                  )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                      child: Column(
-                    children: [
-                      radioButton(Gender.male),
-                      radioButton(Gender.female),
-                    ],
-                  ))
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListView(
+                  children: [
+                    Center(
+                        child: Text(
+                      "What Is Your Programming Languages?",
+                      style: Theme.of(context).textTheme.headline5,
+                    )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                        child: Column(
+                      children: checkBoxListTiles(programmingLanguages),
+                    ))
+                  ],
+                ),
               )),
         ],
       )),
@@ -80,6 +85,23 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {},
           child: const Icon(Icons.save)),
     );
+  }
+
+  List<CheckboxListTile> checkBoxListTiles(Map<String, bool> checkBoxElements) {
+    List<CheckboxListTile> result = [];
+    checkBoxElements.forEach((k, v) {
+      result.add(CheckboxListTile(
+          //* you can use controlAffinity to change the localization for this widget (locally)
+          title: Text(k),
+          value: v,
+          onChanged: (val) {
+            setState(() {
+              //! the dart usually call methods and send arguments (parameters) by reference not values
+              checkBoxElements[k] = val!;
+            });
+          }));
+    });
+    return result;
   }
 
   RadioListTile radioButton(Gender gender) {
