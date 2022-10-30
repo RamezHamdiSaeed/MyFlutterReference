@@ -17,12 +17,6 @@ class _HomePageState extends State<HomePage> {
     "Python",
     "C"
   ];
-  String? dropdownButtonValue;
-  @override
-  void initState() {
-    super.initState();
-    dropdownButtonValue = programmingLanguages.first;
-  }
 
   int radioButtonIndex = 0;
   Gender? genderIndicator = Gender.male;
@@ -69,31 +63,28 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListView(
                   children: [
-                    Center(
-                        child: Text(
-                      "What Are Your Programming Languages?",
-                      style: Theme.of(context).textTheme.headline5,
-                    )),
+                    // Center(
+                    //     child: Text(
+                    //   "What Are Your Programming Languages?",
+                    //   style: Theme.of(context).textTheme.headline5,
+                    // )),
                     const SizedBox(
                       height: 20,
                     ),
                     Center(
-                        child: DropdownButton<String>(
-                      value: dropdownButtonValue,
-                      items: programmingLanguages
-                          .map((language) => DropdownMenuItem(
-                                value: language,
-                                child: Text(
-                                  language,
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                              ))
-                          .toList(),
-                      onChanged: (newVal) {
-                        setState(() {
-                          dropdownButtonValue = newVal;
-                        });
-                      },
+                        child: ExpansionTile(
+                      leading: const Icon(Icons.account_box_rounded),
+                      title: Text("account",
+                          style: Theme.of(context).textTheme.headline5)
+                      // ignore: prefer_const_literals_to_create_immutables
+                      ,
+                      children: [
+                        ListTile(
+                          leading: const Icon(Icons.login_outlined),
+                          title: Text("LogIn",
+                              style: Theme.of(context).textTheme.headline6),
+                        ),
+                      ],
                     ))
                   ],
                 ),
@@ -104,6 +95,27 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.black,
           onPressed: () {},
           child: const Icon(Icons.save)),
+    );
+  }
+
+  DropdownButton<String> dropDownButton(List<String> items) {
+    String dropdownButtonValue = items.first;
+    return DropdownButton<String>(
+      value: dropdownButtonValue,
+      items: items
+          .map((language) => DropdownMenuItem(
+                value: language,
+                child: Text(
+                  language,
+                  style: const TextStyle(color: Colors.black),
+                ),
+              ))
+          .toList(),
+      onChanged: (newVal) {
+        setState(() {
+          dropdownButtonValue = newVal!;
+        });
+      },
     );
   }
 
