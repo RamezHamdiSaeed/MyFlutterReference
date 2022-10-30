@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
-              flex: 3,
+              flex: 9,
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: ListView(
@@ -69,23 +70,23 @@ class _HomePageState extends State<HomePage> {
                     //   style: Theme.of(context).textTheme.headline5,
                     // )),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Center(
-                        child: ExpansionTile(
-                      leading: const Icon(Icons.account_box_rounded),
-                      title: Text("account",
-                          style: Theme.of(context).textTheme.headline5)
-                      // ignore: prefer_const_literals_to_create_immutables
-                      ,
-                      children: [
-                        ListTile(
-                          leading: const Icon(Icons.login_outlined),
-                          title: Text("LogIn",
-                              style: Theme.of(context).textTheme.headline6),
-                        ),
-                      ],
-                    ))
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 40,
+                            child: Marquee(
+                              startAfter: const Duration(seconds: 3),
+                              pauseAfterRound: const Duration(seconds: 3),
+                              blankSpace: 10,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: Colors.red),
+                              text:
+                                  "Do You Want To Get A Great Offer For This App SOURCE CODE:-)",
+                            )))
                   ],
                 ),
               )),
@@ -95,6 +96,21 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.black,
           onPressed: () {},
           child: const Icon(Icons.save)),
+    );
+  }
+
+  ExpansionTile expansionTile(BuildContext context) {
+    return ExpansionTile(
+      leading: const Icon(Icons.account_box_rounded),
+      title: Text("account", style: Theme.of(context).textTheme.headline5)
+      // ignore: prefer_const_literals_to_create_immutables
+      ,
+      children: [
+        ListTile(
+          leading: const Icon(Icons.login_outlined),
+          title: Text("LogIn", style: Theme.of(context).textTheme.headline6),
+        ),
+      ],
     );
   }
 

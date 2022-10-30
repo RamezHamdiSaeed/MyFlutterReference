@@ -83,3 +83,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use checkBoxes.
 - How to use Switches to change the themeMode from light to dark and vice versa.
 - How to use Expandable List Tiles called ExpansionTile Widget.
+- How to use Marquee Widget (good practice to be used for great offers to attract users attention)
