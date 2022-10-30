@@ -9,14 +9,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Map<String, bool> programmingLanguages = {
-    "Dart": true,
-    "JavaScript": true,
-    "TypeScript": true,
-    "Java": true,
-    "Python": true,
-    "C": false
-  };
+  List<String> programmingLanguages = [
+    "Dart",
+    "JavaScript",
+    "TypeScript",
+    "Java",
+    "Python",
+    "C"
+  ];
+  String? dropdownButtonValue;
+  @override
+  void initState() {
+    super.initState();
+    dropdownButtonValue = programmingLanguages.first;
+  }
+
   int radioButtonIndex = 0;
   Gender? genderIndicator = Gender.male;
 //* adding leading Icon
@@ -64,15 +71,29 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Center(
                         child: Text(
-                      "What Is Your Programming Languages?",
+                      "What Are Your Programming Languages?",
                       style: Theme.of(context).textTheme.headline5,
                     )),
                     const SizedBox(
                       height: 20,
                     ),
                     Center(
-                        child: Column(
-                      children: checkBoxListTiles(programmingLanguages),
+                        child: DropdownButton<String>(
+                      value: dropdownButtonValue,
+                      items: programmingLanguages
+                          .map((language) => DropdownMenuItem(
+                                value: language,
+                                child: Text(
+                                  language,
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                              ))
+                          .toList(),
+                      onChanged: (newVal) {
+                        setState(() {
+                          dropdownButtonValue = newVal;
+                        });
+                      },
                     ))
                   ],
                 ),
