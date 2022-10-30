@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:marquee/marquee.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,7 +20,8 @@ class _HomePageState extends State<HomePage> {
     "Python",
     "C"
   ];
-  Image? image;
+  Color textColor = Colors.black;
+  Color backgroundColor = Colors.white;
   int radioButtonIndex = 0;
   Gender? genderIndicator = Gender.male;
 //* adding leading Icon
@@ -60,34 +62,75 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
-              flex: 9,
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: ListView(
-                  children: [
-                    // Center(
-                    //     child: Text(
-                    //   "What Are Your Programming Languages?",
-                    //   style: Theme.of(context).textTheme.headline5,
-                    // )),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Center(child: image)
-                  ],
+            padding: const EdgeInsets.only(left: 15.0),
+            child: ListView(
+              children: [
+                // Center(
+                //     child: Text(
+                //   "What Are Your Programming Languages?",
+                //   style: Theme.of(context).textTheme.headline5,
+                // )),
+                const SizedBox(
+                  height: 10,
                 ),
-              )),
+                Center(
+                    child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(backgroundColor)),
+                        onPressed: () {
+                          showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    content: Column(children: [
+                                      SingleChildScrollView(
+                                          child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          BlockPicker(
+                                            pickerColor: backgroundColor,
+                                            onColorChanged: (newColor) {
+                                              setState(() {
+                                                backgroundColor = newColor;
+                                              });
+                                            },
+                                          ),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text("confirm"))
+                                        ],
+                                      ))
+                                    ]),
+                                  ));
+                        },
+                        child: Text(
+                          "color picker",
+                          style: TextStyle(
+                              color: backgroundColor.computeLuminance() > 0.5
+                                  ? Colors.black
+                                  : Colors.white),
+                        )),
+                  ],
+                ))
+              ],
+            ),
+          )),
         ],
       )),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.black,
-          onPressed: () async {
-            Image? pickedImage = await getImageFromGallery();
-            setState(() {
-              if (pickedImage != null) image = pickedImage;
-            });
-          },
-          child: const Icon(Icons.image)),
+      // floatingActionButton: FloatingActionButton(
+      //     backgroundColor: Colors.black,
+      //     onPressed: () {},
+      //     child: const Icon(Icons.image)),
     );
   }
 

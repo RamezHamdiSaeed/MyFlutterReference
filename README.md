@@ -85,3 +85,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use Expandable List Tiles called ExpansionTile Widget.
 - How to use Marquee Widget (good practice to be used for great offers to attract users attention).
 - How to use ImagePicker to pick images & videos from the gallery or camera.
+- How to use BlockPicker,MaterialPicker and SlidePicker from the color picker package from pub.dev .
