@@ -12,14 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // List<String> programmingLanguages = [
-  //   "Dart",
-  //   "JavaScript",
-  //   "TypeScript",
-  //   "Java",
-  //   "Python",
-  //   "C"
-  // ];
+  List<String> programmingLanguages = [
+    "Dart",
+    "JavaScript",
+    "TypeScript",
+    "Java",
+    "Python",
+    "C"
+  ];
   double percent = 0.5;
   Gender? genderIndicator = Gender.male;
 //* adding leading Icon
@@ -61,16 +61,19 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
               flex: 4,
-              child: Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
-                  child: CircularPercentIndicator(
-                    radius: 100,
-                    percent: percent,
-                    center: Text(
-                      "Male in place",
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                  ))),
+              //! It just a listView with 3d scroll effect
+              child: ListWheelScrollView(
+                itemExtent: 50,
+                children: programmingLanguages
+                    .map((e) => Container(
+                          width: double.infinity,
+                          color:
+                              Colors.red[programmingLanguages.indexOf(e) * 100],
+                          height: 50,
+                          child: Center(child: Text(e)),
+                        ))
+                    .toList(),
+              )),
         ],
       )),
       // floatingActionButton: FloatingActionButton(
