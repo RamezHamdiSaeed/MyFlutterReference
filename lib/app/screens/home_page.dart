@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     "Python",
     "C"
   ];
-
+  Image? image;
   int radioButtonIndex = 0;
   Gender? genderIndicator = Gender.male;
 //* adding leading Icon
@@ -72,21 +73,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Center(
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 40,
-                            child: Marquee(
-                              startAfter: const Duration(seconds: 3),
-                              pauseAfterRound: const Duration(seconds: 3),
-                              blankSpace: 10,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(color: Colors.red),
-                              text:
-                                  "Do You Want To Get A Great Offer For This App SOURCE CODE:-)",
-                            )))
+                    Center(child: image)
                   ],
                 ),
               )),
@@ -94,8 +81,34 @@ class _HomePageState extends State<HomePage> {
       )),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
-          onPressed: () {},
-          child: const Icon(Icons.save)),
+          onPressed: () async {
+            Image? pickedImage = await getImageFromGallery();
+            setState(() {
+              if (pickedImage != null) image = pickedImage;
+            });
+          },
+          child: const Icon(Icons.image)),
+    );
+  }
+
+  Future<Image?> getImageFromGallery() async {
+    final ImagePicker picker = ImagePicker();
+    //!since the operation of picking image from device depends on the user response time rate so the method required to be async (because it returns Future)
+    //* the user under some terms of conditions won't pick an image so the image variable here is nullable
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image == null) {
+      return null;
+    }
+    return Image.file(File(image.path));
+  }
+
+  Marquee marquee(BuildContext context) {
+    return Marquee(
+      startAfter: const Duration(seconds: 3),
+      pauseAfterRound: const Duration(seconds: 3),
+      blankSpace: 10,
+      style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.red),
+      text: "Do You Want To Get A Great Offer For This App SOURCE CODE:-)",
     );
   }
 
