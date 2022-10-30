@@ -62,69 +62,32 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
+              flex: 4,
               child: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
-            child: ListView(
-              children: [
-                // Center(
-                //     child: Text(
-                //   "What Are Your Programming Languages?",
-                //   style: Theme.of(context).textTheme.headline5,
-                // )),
-                const SizedBox(
-                  height: 10,
+                padding: const EdgeInsets.only(left: 15.0),
+                child: ListView.builder(
+                  itemCount: programmingLanguages.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Dismissible(
+                          key: Key(programmingLanguages[index]),
+                          onDismissed: (dir) {
+                            setState(() {
+                              programmingLanguages.removeAt(index);
+                            });
+                          },
+                          child: Text(programmingLanguages[index]),
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        )
+                      ],
+                    );
+                  },
                 ),
-                Center(
-                    child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(backgroundColor)),
-                        onPressed: () {
-                          showDialog(
-                              barrierDismissible: false,
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                    content: Column(children: [
-                                      SingleChildScrollView(
-                                          child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          BlockPicker(
-                                            pickerColor: backgroundColor,
-                                            onColorChanged: (newColor) {
-                                              setState(() {
-                                                backgroundColor = newColor;
-                                              });
-                                            },
-                                          ),
-                                          ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: const Text("confirm"))
-                                        ],
-                                      ))
-                                    ]),
-                                  ));
-                        },
-                        child: Text(
-                          "color picker",
-                          style: TextStyle(
-                              color: backgroundColor.computeLuminance() > 0.5
-                                  ? Colors.black
-                                  : Colors.white),
-                        )),
-                  ],
-                ))
-              ],
-            ),
-          )),
+              )),
         ],
       )),
       // floatingActionButton: FloatingActionButton(
