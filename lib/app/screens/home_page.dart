@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   ];
   double percent = 0.5;
   Gender? genderIndicator = Gender.male;
+  Widget? image;
 //* adding leading Icon
   @override
   Widget build(BuildContext context) {
@@ -62,24 +62,20 @@ class _HomePageState extends State<HomePage> {
           Expanded(
               flex: 4,
               //! It just a listView with 3d scroll effect
-              child: ListWheelScrollView(
-                itemExtent: 50,
-                children: programmingLanguages
-                    .map((e) => Container(
-                          width: double.infinity,
-                          color:
-                              Colors.red[programmingLanguages.indexOf(e) * 100],
-                          height: 50,
-                          child: Center(child: Text(e)),
-                        ))
-                    .toList(),
-              )),
+              child: Center(child: image)),
         ],
       )),
-      // floatingActionButton: FloatingActionButton(
-      //     backgroundColor: Colors.black,
-      //     onPressed: () {},
-      //     child: const Icon(Icons.image)),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          onPressed: () async {
+            Image? pickedImage = await getImageFromGallery();
+            setState(() {
+              if (pickedImage != null)
+                //! try to zoom in and out of your picked image through floating action button
+                image = InteractiveViewer(child: pickedImage);
+            });
+          },
+          child: const Icon(Icons.image)),
     );
   }
 
