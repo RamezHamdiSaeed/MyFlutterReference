@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:marquee/marquee.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,17 +12,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> programmingLanguages = [
-    "Dart",
-    "JavaScript",
-    "TypeScript",
-    "Java",
-    "Python",
-    "C"
-  ];
-  Color textColor = Colors.black;
-  Color backgroundColor = Colors.white;
-  int radioButtonIndex = 0;
+  // List<String> programmingLanguages = [
+  //   "Dart",
+  //   "JavaScript",
+  //   "TypeScript",
+  //   "Java",
+  //   "Python",
+  //   "C"
+  // ];
+  double percent = 0.5;
   Gender? genderIndicator = Gender.male;
 //* adding leading Icon
   @override
@@ -64,30 +62,15 @@ class _HomePageState extends State<HomePage> {
           Expanded(
               flex: 4,
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: ListView.builder(
-                  itemCount: programmingLanguages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Dismissible(
-                          key: Key(programmingLanguages[index]),
-                          onDismissed: (dir) {
-                            setState(() {
-                              programmingLanguages.removeAt(index);
-                            });
-                          },
-                          child: Text(programmingLanguages[index]),
-                        ),
-                        const SizedBox(
-                          height: 50,
-                        )
-                      ],
-                    );
-                  },
-                ),
-              )),
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: CircularPercentIndicator(
+                    radius: 100,
+                    percent: percent,
+                    center: Text(
+                      "Male in place",
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  ))),
         ],
       )),
       // floatingActionButton: FloatingActionButton(

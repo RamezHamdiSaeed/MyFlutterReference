@@ -87,3 +87,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use ImagePicker to pick images & videos from the gallery or camera.
 - How to use BlockPicker,MaterialPicker and SlidePicker from the color picker package from pub.dev .
 - How to use Dismissible Widget to delete items from the list.
+- How to use Percent Indicator package from pub.dev to show the progress of the task.
