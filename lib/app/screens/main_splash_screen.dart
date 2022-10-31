@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
-import 'package:my_flutter_reference/app/screens/home_page.dart';
+import 'package:my_flutter_reference/app/screens/auth_screen.dart';
 
 class MainSplashScreen extends StatelessWidget {
   const MainSplashScreen({super.key});
@@ -13,7 +13,7 @@ class MainSplashScreen extends StatelessWidget {
         body: EasySplashScreen(
       logo: Image.asset("assets/images/icon/icon.jpeg"),
       title: const Text("Welcome back"),
-      navigator: const HomePage(),
+      navigator: const AuthScreen(),
     ));
   }
 }

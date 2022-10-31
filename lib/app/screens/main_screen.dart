@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:image_picker/image_picker.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MainScreenState extends State<MainScreen> {
   List<String> programmingLanguages = [
     "Dart",
     "JavaScript",
