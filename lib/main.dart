@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_reference/app/screens/home_page.dart';
+import 'package:my_flutter_reference/app/screens/main_splash_screen.dart';
 
 main() {
   runApp(const BMI());
@@ -11,7 +11,7 @@ class BMI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomePage(),
+      home: MainSplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
