@@ -92,3 +92,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use InteractiveViewer Widget to make a zoomable image.
 - How to use Splash Screen package from pub.dev to make a splash screen.
 - How to use Forms and TextFormField Widget to make a form.
+- How to use PageView Widget to be alternative for just splash screen (with quick tour advantage not like splash screen).
