@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-class PageViewScreen extends StatefulWidget {
-  const PageViewScreen({super.key});
-
-  @override
-  State<PageViewScreen> createState() => _PageViewScreenState();
-}
-
 class PageViewData {
   String backgroundImage;
   Icon icon;
@@ -17,6 +10,13 @@ class PageViewData {
       required this.icon,
       required this.title,
       required this.description});
+}
+
+class PageViewScreen extends StatefulWidget {
+  const PageViewScreen({super.key});
+
+  @override
+  State<PageViewScreen> createState() => _PageViewScreenState();
 }
 
 class _PageViewScreenState extends State<PageViewScreen> {
@@ -94,16 +94,25 @@ class _PageViewScreenState extends State<PageViewScreen> {
                   ),
                 );
               }),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-                onPressed: null,
-                child: Text(
-                  "SignIn",
-                  style: TextStyle(color: Colors.white),
-                )),
+          //! we used align here to align the child (elevated button to nearly to the bottom (1.0) relatively)
+          //* we used the container to make margin and it's good practice for specific type of screens like edged and notched screens
+          Align(
+            alignment: const Alignment(0.9, 0.9),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                width: double.infinity,
+                child: const ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+                    onPressed: null,
+                    child: Text(
+                      "SignIn",
+                      style: TextStyle(color: Colors.white),
+                    )),
+              ),
+            ),
           )
         ]),
       ),

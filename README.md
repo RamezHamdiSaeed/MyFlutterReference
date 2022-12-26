@@ -93,3 +93,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use Splash Screen package from pub.dev to make a splash screen.
 - How to use Forms and TextFormField Widget to make a form.
 - How to use PageView Widget to be alternative for just splash screen (with quick tour advantage not like splash screen).
+- How to use stack specially when dealing with widget like PageView which takes all the dimensions already.
