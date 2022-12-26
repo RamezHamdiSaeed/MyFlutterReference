@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class PageViewData {
@@ -12,16 +14,65 @@ class PageViewData {
       required this.description});
 }
 
+class Indicator extends StatelessWidget {
+  final int activePageIndex;
+  const Indicator({super.key, required this.activePageIndex});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        indicatorBullet((activePageIndex == 0) ? Colors.green : Colors.red),
+        indicatorBullet((activePageIndex == 1) ? Colors.green : Colors.red),
+        indicatorBullet((activePageIndex == 2) ? Colors.green : Colors.red),
+        indicatorBullet((activePageIndex == 3) ? Colors.green : Colors.red),
+      ],
+    );
+  }
+
+  Container indicatorBullet(Color color) {
+    return Container(
+        width: 15,
+        height: 15,
+        decoration: BoxDecoration(shape: BoxShape.circle, color: color));
+  }
+}
+
 class PageViewScreen extends StatefulWidget {
-  const PageViewScreen({super.key});
+  const PageViewScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<PageViewScreen> createState() => _PageViewScreenState();
 }
 
 class _PageViewScreenState extends State<PageViewScreen> {
+  int pageViewIndex = 0;
+  PageController? pageViewController;
+  @override
+  void initState() {
+    super.initState();
+    pageViewController == PageController();
+    Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (pageViewIndex < 4) {
+        setState(() {
+          pageViewIndex++;
+          pageViewController!.animateToPage(pageViewIndex,
+              duration: const Duration(seconds: 2), curve: Curves.easeIn);
+        });
+      } else if (pageViewIndex == 4) {
+        pageViewIndex++;
+        Future.delayed(const Duration(seconds: 2),
+            () => Navigator.pushNamed(context, "/authScreen"));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    pageViewController = PageController(initialPage: pageViewIndex);
     List<PageViewData> data = [
       PageViewData(
           backgroundImage: "assets/images/q1.jpg",
@@ -48,74 +99,71 @@ class _PageViewScreenState extends State<PageViewScreen> {
           description:
               "Repellat cum dolorem dolor molestias. Praesentium reprehenderit aut sed odio quo voluptate et. Aspernatur laborum minus molestias dolorem velit animi odit. Recusandae vitae eos vel molestiae. Optio non ipsa cum. Sint voluptatum esse."),
     ];
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        iconTheme: const IconThemeData(size: 100),
-        textTheme: const TextTheme(
-          headline3: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30),
-          headline6: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20),
-        ),
-      ),
-      home: Scaffold(
-        //! the PageView Widget needs all the dimensions of the screen so it Scaffolded within MaterialApp Directly
-        //! we want to add button but above all the PageView children at a time so we will use stack
-        //* since the stack children share all the dimensions from the parent Widget
-        //* since the Stack children list represent each child as  a layer from first to last equal to from bottom to top
-        body: Stack(alignment: AlignmentDirectional.bottomCenter, children: [
-          PageView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: ExactAssetImage(data[index].backgroundImage),
-                        fit: BoxFit.cover),
+    return Scaffold(
+      //! the PageView Widget needs all the dimensions of the screen so it Scaffolded within MaterialApp Directly
+      //! we want to add button but above all the PageView children at a time so we will use stack
+      //* since the stack children share all the dimensions from the parent Widget
+      //* since the Stack children list represent each child as  a layer from first to last equal to from bottom to top
+      body: Stack(alignment: AlignmentDirectional.bottomCenter, children: [
+        PageView.builder(
+            controller: pageViewController,
+            onPageChanged: ((value) => setState(() {
+                  pageViewIndex = value;
+                })),
+            itemCount: data.length,
+            itemBuilder: (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: ExactAssetImage(data[index].backgroundImage),
+                      fit: BoxFit.cover),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      data[index].icon,
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Text(data[index].title,
+                          style: Theme.of(context).textTheme.headline3),
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      Text(data[index].description,
+                          style: Theme.of(context).textTheme.headline6),
+                    ],
                   ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        data[index].icon,
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        Text(data[index].title,
-                            style: Theme.of(context).textTheme.headline3),
-                        const SizedBox(
-                          height: 80,
-                        ),
-                        Text(data[index].description,
-                            style: Theme.of(context).textTheme.headline6),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-          //! we used align here to align the child (elevated button to nearly to the bottom (1.0) relatively)
-          //* we used the container to make margin and it's good practice for specific type of screens like edged and notched screens
-          Align(
-            alignment: const Alignment(0.9, 0.9),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 1.5),
-                width: double.infinity,
-                child: const ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-                    onPressed: null,
-                    child: Text(
-                      "SignIn",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ),
+                ),
+              );
+            }),
+        //! we used align here to align the child (elevated button to nearly to the bottom (1.0) relatively)
+        //* we used the container to make margin and it's good practice for specific type of screens like edged and notched screens
+        Align(
+            alignment: const Alignment(0.7, 0.7),
+            child: Indicator(
+              activePageIndex: pageViewIndex,
+            )),
+        Align(
+          alignment: const Alignment(0.9, 0.9),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 1.5),
+              width: double.infinity,
+              child: ElevatedButton(
+                  style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+                  onPressed: () => Navigator.pushNamed(context, "/authScreen"),
+                  child: const Text(
+                    "SignIn",
+                    style: TextStyle(color: Colors.white),
+                  )),
             ),
-          )
-        ]),
-      ),
+          ),
+        )
+      ]),
     );
   }
 }
