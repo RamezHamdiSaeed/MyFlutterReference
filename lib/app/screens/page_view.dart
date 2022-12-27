@@ -15,6 +15,27 @@ class PageViewData {
       required this.description});
 }
 
+//! so it's like global state management but for specific subtree and meant to context
+class TextColor extends InheritedWidget {
+  const TextColor({super.key, required this.child, required this.color})
+      : super(child: child);
+  final Color color;
+
+  @override
+  // ignore: overridden_fields
+  final Widget child;
+
+  static TextColor? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<TextColor>();
+  }
+
+  @override
+  bool updateShouldNotify(TextColor oldWidget) {
+    //! so it always update the state of specific context of specific sub tree from project widget tree
+    return true;
+  }
+}
+
 class Indicator extends StatelessWidget {
   final int activePageIndex;
   const Indicator({super.key, required this.activePageIndex});
@@ -155,17 +176,26 @@ class _PageViewScreenState extends State<PageViewScreen> {
           alignment: const Alignment(0.9, 0.9),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 1.5),
-              width: double.infinity,
-              child: ElevatedButton(
-                  style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-                  onPressed: () => Navigator.pushNamed(context, "/authScreen"),
-                  child: const Text(
-                    "SignIn",
-                    style: TextStyle(color: Colors.white),
-                  )),
+            child: TextColor(
+              color: Colors.black,
+              child: Builder(
+                  //! we changed the context of the below container to ctx to avoid using the old context
+                  builder: (ctx) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              TextColor.of(ctx)?.color)),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, "/authScreen"),
+                      child: const Text(
+                        "SignIn",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                );
+              }),
             ),
           ),
         )
