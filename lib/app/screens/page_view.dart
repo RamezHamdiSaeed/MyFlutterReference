@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
 class PageViewData {
   String backgroundImage;
@@ -31,11 +32,13 @@ class Indicator extends StatelessWidget {
     );
   }
 
-  Container indicatorBullet(Color color) {
-    return Container(
-        width: 15,
-        height: 15,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: color));
+  Widget indicatorBullet(Color color) {
+    return (color == Colors.green)
+        ? Icon(Icons.star, color: color, size: 15)
+        : Container(
+            width: 15,
+            height: 15,
+            decoration: BoxDecoration(shape: BoxShape.circle, color: color));
   }
 }
 
@@ -56,13 +59,13 @@ class _PageViewScreenState extends State<PageViewScreen> {
     super.initState();
     pageViewController == PageController();
     Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (pageViewIndex < 4) {
+      if (pageViewIndex < 3) {
         setState(() {
           pageViewIndex++;
           pageViewController!.animateToPage(pageViewIndex,
               duration: const Duration(seconds: 2), curve: Curves.easeIn);
         });
-      } else if (pageViewIndex == 4) {
+      } else if (pageViewIndex == 3) {
         pageViewIndex++;
         Future.delayed(const Duration(seconds: 2),
             () => Navigator.pushNamed(context, "/authScreen"));
@@ -142,8 +145,11 @@ class _PageViewScreenState extends State<PageViewScreen> {
         //* we used the container to make margin and it's good practice for specific type of screens like edged and notched screens
         Align(
             alignment: const Alignment(0.7, 0.7),
-            child: Indicator(
-              activePageIndex: pageViewIndex,
+            child: PageViewDotIndicator(
+              currentItem: pageViewIndex,
+              count: data.length,
+              unselectedColor: Colors.black26,
+              selectedColor: Colors.white,
             )),
         Align(
           alignment: const Alignment(0.9, 0.9),

@@ -95,3 +95,4 @@ samples, guidance on mobile development, and a full API reference.
 - How to use PageView Widget to be alternative for just splash screen (with quick tour advantage not like splash screen).
 - How to use stack specially when dealing with widget like PageView which takes all the dimensions already.
 - how to add indicator to the PageView, navigation to the next route when reaching the last PageView Child (with delay) and auto scrolling.
+- How to use pub.dev pageViewIndicator (third party)

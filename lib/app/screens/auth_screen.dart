@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:my_flutter_reference/app/screens/main_screen.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class _AuthScreenState extends State<AuthScreen> {
   //! we need a global key to the form (which all the form fields are within it) to trigger the onSave and the validate
   final GlobalKey<FormState> _formGlobalKey = GlobalKey();
   //* we need controller for each input field that under monitoring
-  TextEditingController _password = TextEditingController();
+  final TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
