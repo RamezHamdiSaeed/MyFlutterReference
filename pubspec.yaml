@@ -65,7 +65,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  assets:
+  # assets:
     # ! we can just use images/ to link all the images files within it at one line
     # - assets/images/
     # An image asset can refer to one or more resolution-specific "variants", see
@@ -78,22 +78,22 @@ flutter:
     # list giving the asset and other descriptors for the font. For
     # example:
     # don't forget to that the font: is indented by one space.
-  fonts:
-    - family: Raleway
-      fonts:
-        - asset: assets/fonts/Raleway/Raleway-Black.tff
-          weight: 900
-        - asset: assets/fonts/Raleway/Raleway-Bold.tff
-          weight: 700
-        - asset: assets/fonts/Raleway/Raleway-Regular.tff
-    - family: RobotoCondenced
-      fonts:
-        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Italic.ttf
-        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Light.ttf
-          weight: 900
-        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Regular.ttf
+fonts:
+  - family: Raleway
+    fonts:
+      - asset: assets/fonts/Raleway/Raleway-Black.tff
+        weight: 900
+      - asset: assets/fonts/Raleway/Raleway-Bold.tff
+        weight: 700
+      - asset: assets/fonts/Raleway/Raleway-Regular.tff
+  - family: RobotoCondenced
+    fonts:
+      - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Italic.ttf
+      - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Light.ttf
+        weight: 900
+      - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Regular.ttf
     #
     # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages

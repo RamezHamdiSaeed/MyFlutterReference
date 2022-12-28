@@ -102,3 +102,4 @@ samples, guidance on mobile development, and a full API reference.
 ## MealRec
 
 - prepare the project fonts,MVC model.
+- setup the gridView of categories.
