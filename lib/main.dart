@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:my_flutter_reference/app/screens/main_splash_screen.dart';
-import 'package:my_flutter_reference/app/screens/page_view.dart';
-import 'package:my_flutter_reference/app/screens/auth_screen.dart';
-import 'package:my_flutter_reference/app/screens/main_splash_screen.dart';
+
+import 'app/screens/categories_screen.dart';
 
 main() {
   runApp(const Home());
@@ -30,9 +28,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       routes: {
-        "/": (context) => const PageViewScreen(),
-        "/splashScreen": (context) => const MainSplashScreen(),
-        "/authScreen": (context) => const AuthScreen(),
+        "/": (context) => const CategoriesScreen(),
       },
       initialRoute: "/",
     );

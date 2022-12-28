@@ -98,3 +98,7 @@ samples, guidance on mobile development, and a full API reference.
 - How to use pub.dev pageViewIndicator (third party)
 - How to use InheritedWidget and context to use it within specific tree directly like Theme(but theme accessible within the whole widget tree of the project)
 - How to use google_nav_bar
+
+## MealRec
+
+- prepare the project fonts,MVC model.
