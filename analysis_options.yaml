@@ -24,6 +24,11 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    # ! we want to delete the warning of the unused curly braces when using if, else if and else statements with just one statement without curly braces
+    curly_braces_in_flow_control_structures: false
+analyzer:
+  errors:
+    curly_braces_in_flow_control_structures: error
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
